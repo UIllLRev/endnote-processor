@@ -14,5 +14,34 @@ namespace FirstVistaTest
         {
             InitializeComponent();
         }
+
+        private void frmProgress_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        public void ResetBar()
+        {
+            prgBar.Value = 0;
+            Application.DoEvents();
+        }
+
+        public void SetMaxVal(int max)
+        {
+            prgBar.Maximum = max;
+            Application.DoEvents();
+        }
+
+        public void SetMinVal(int min)
+        {
+            prgBar.Minimum = min;
+            Application.DoEvents();
+        }
+
+        public void stepUp(int stepSize)
+        {
+            prgBar.Value += stepSize;
+            Application.DoEvents();
+        }
     }
 }

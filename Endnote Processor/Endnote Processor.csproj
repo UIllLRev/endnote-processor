@@ -57,6 +57,7 @@
     <Compile Include="frmProgress.Designer.cs">
       <DependentUpon>frmProgress.cs</DependentUpon>
     </Compile>
+    <Compile Include="NoteInfo.cs" />
     <Compile Include="ProcessingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +67,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmBreakUp.resx">
       <DependentUpon>frmBreakUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProgress.resx">
+      <DependentUpon>frmProgress.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProcessingForm.resx">
       <DependentUpon>ProcessingForm.cs</DependentUpon>
