@@ -127,11 +127,7 @@ namespace FirstVistaTest
             }
             if (this.oWordApp != null)
             {
-                _Application arg_180_0 = this.oWordApp;
-                object value = Missing.Value;
-                object value2 = Missing.Value;
-                object value3 = Missing.Value;
-                arg_180_0.Quit(ref value, ref value2, ref value3);
+                oWordApp.Quit();
                 this.oWordApp = null;
             }
             this.bExitGenerated = true;
@@ -163,9 +159,8 @@ namespace FirstVistaTest
                             this.sEndNoteInfo = new ArrayList();
                             int i = 0;
                             NoteInfo noteInfo = new NoteInfo();
-                            int arg_16D_0 = 0;
                             int num = this.oWordDoc.Endnotes.Count - 1;
-                            for (i = arg_16D_0; i <= num; i++)
+                            for (i = 0; i <= num; i++)
                             {
                                 try
                                 {
@@ -290,9 +285,9 @@ namespace FirstVistaTest
                 mnOpenPart.Enabled = true;
                 mnSaveProg.Enabled = false;
             }
-            catch (Exception)
+            catch (Exception exp)
             {
-                MessageBox.Show("You must have Microsoft Word XP or higher installed to use this program", "Processing Endnotes", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("You must have Microsoft Word XP or higher installed to use this program: " + exp.Message, "Processing Endnotes", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Close();
             }
         }
@@ -314,11 +309,10 @@ namespace FirstVistaTest
                 num = 0;
             }
             this.lstNotes.Items.Clear();
-            int arg_58_0 = 0;
             checked
             {
                 int num2 = this.sEndNoteArray.Count - 1;
-                for (int i = arg_58_0; i <= num2; i++)
+                for (int i = 0; i <= num2; i++)
                 {
                     NoteInfo noteInfo = (NoteInfo)sEndNoteInfo[i];
                     lstNotes.Items.Add("Endnote " + (i + 1).ToString());
@@ -548,9 +542,8 @@ namespace FirstVistaTest
                     ArrayList arrayList4 = new ArrayList();
                     ArrayList arrayList5 = new ArrayList();
                     ArrayList arrayList6 = new ArrayList();
-                    int arg_C2_0 = 0;
                     int num = this.sEndNoteArray.Count - 1;
-                    for (int i = arg_C2_0; i <= num; i++)
+                    for (int i = 0; i <= num; i++)
                     {
                         NoteInfo noteInfo = (NoteInfo)sEndNoteInfo[i];
                         if (!noteInfo.SupraOrId)
@@ -584,9 +577,8 @@ namespace FirstVistaTest
                         frmProgress.ResetBar();
                         frmProgress.SetMaxVal(arrayList3.Count);
                         StreamWriter streamWriter = new StreamWriter(text + "journals.csv", false);
-                        int arg_200_0 = 0;
                         int num2 = arrayList3.Count - 1;
-                        for (int i = arg_200_0; i <= num2; i++)
+                        for (int i = 0; i <= num2; i++)
                         {
                             streamWriter.Write(arrayList3[i] + sDelimiter);
                             frmProgress.StepUp(1);
@@ -598,9 +590,8 @@ namespace FirstVistaTest
                         frmProgress.ResetBar();
                         frmProgress.SetMaxVal(arrayList.Count);
                         StreamWriter streamWriter2 = new StreamWriter(text + "books.csv", false);
-                        int arg_271_0 = 0;
                         int num3 = arrayList.Count - 1;
-                        for (int i = arg_271_0; i <= num3; i++)
+                        for (int i = 0; i <= num3; i++)
                         {
                             streamWriter2.Write(arrayList[i] + sDelimiter);
                             frmProgress.StepUp(1);
@@ -612,9 +603,8 @@ namespace FirstVistaTest
                         frmProgress.ResetBar();
                         frmProgress.SetMaxVal(arrayList2.Count);
                         StreamWriter streamWriter3 = new StreamWriter(text + "cases.csv", false);
-                        int arg_2E2_0 = 0;
                         int num4 = arrayList2.Count - 1;
-                        for (int i = arg_2E2_0; i <= num4; i++)
+                        for (int i = 0; i <= num4; i++)
                         {
                             streamWriter3.Write(arrayList2[i] + sDelimiter);
                             frmProgress.StepUp(1);
@@ -626,9 +616,8 @@ namespace FirstVistaTest
                         frmProgress.ResetBar();
                         frmProgress.SetMaxVal(arrayList4.Count);
                         StreamWriter streamWriter4 = new StreamWriter(text + "legislative.csv", false);
-                        int arg_353_0 = 0;
                         int num5 = arrayList4.Count - 1;
-                        for (int i = arg_353_0; i <= num5; i++)
+                        for (int i = 0; i <= num5; i++)
                         {
                             streamWriter4.Write(arrayList4[i] + sDelimiter);
                             frmProgress.StepUp(1);
@@ -640,9 +629,8 @@ namespace FirstVistaTest
                         frmProgress.ResetBar();
                         frmProgress.SetMaxVal(arrayList5.Count);
                         StreamWriter streamWriter5 = new StreamWriter(text + "periodicals.csv", false);
-                        int arg_3C4_0 = 0;
                         int num6 = arrayList5.Count - 1;
-                        for (int i = arg_3C4_0; i <= num6; i++)
+                        for (int i = 0; i <= num6; i++)
                         {
                             streamWriter5.Write(arrayList5[i] + sDelimiter);
                             frmProgress.StepUp(1);
@@ -654,9 +642,7 @@ namespace FirstVistaTest
                         frmProgress.ResetBar();
                         frmProgress.SetMaxVal(arrayList6.Count);
                         StreamWriter streamWriter6 = new StreamWriter(text + "miscellaneous.csv", false);
-                        int arg_435_0 = 0;
-                        int num7 = arrayList6.Count - 1;
-                        for (int i = arg_435_0; i <= num7; i++)
+                        for (int i = 0; i <= arrayList6.Count - 1; i++)
                         {
                             streamWriter6.Write(arrayList6[i] + sDelimiter);
                             frmProgress.StepUp(1);
@@ -869,9 +855,8 @@ namespace FirstVistaTest
                     try
                     {
                         StreamWriter streamWriter = new StreamWriter(saveFileDialog.FileName, false);
-                        int arg_140_0 = 0;
                         int num = this.sEndNoteArray.Count - 1;
-                        for (int i = arg_140_0; i <= num; i++)
+                        for (int i = 0; i <= num; i++)
                         {
                             streamWriter.Write(sEndNoteArray[i]);
                             if (i < this.sEndNoteArray.Count - 1)
@@ -880,9 +865,8 @@ namespace FirstVistaTest
                             }
                         }
                         streamWriter.Write(this.sDelimiter3);
-                        int arg_19B_0 = 0;
                         int num2 = this.sEndNoteInfo.Count - 1;
-                        for (int i = arg_19B_0; i <= num2; i++)
+                        for (int i = 0; i <= num2; i++)
                         {
                             NoteInfo noteInfo = (NoteInfo)sEndNoteInfo[i];
                             streamWriter.Write(noteInfo.Type.ToString() + sDelimiter4 + noteInfo.SupraOrId.ToString());
@@ -982,10 +966,9 @@ namespace FirstVistaTest
                         string[] array3 = array[1].Split(this.sDelimiter2);
                         this.sEndNoteArray = new ArrayList();
                         this.sEndNoteInfo = new ArrayList();
-                        int arg_210_0 = 0;
                         int num = array2.Length - 1;
                         NoteInfo noteInfo;
-                        for (int i = arg_210_0; i <= num; i++)
+                        for (int i = 0; i <= num; i++)
                         {
                             this.sEndNoteArray.Add(array2[i]);
                             noteInfo = new NoteInfo();
