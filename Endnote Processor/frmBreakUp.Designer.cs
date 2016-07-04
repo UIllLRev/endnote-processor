@@ -28,46 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this._btnCancel = new System.Windows.Forms.Button();
-            this._btnOK = new System.Windows.Forms.Button();
             this.pnlHowMany = new System.Windows.Forms.Panel();
             this.cbxHowMany = new System.Windows.Forms.ComboBox();
             this.lblHowMany = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnOK = new System.Windows.Forms.Button();
+            this.pnlSplit = new System.Windows.Forms.Panel();
+            this.txtSplit = new System.Windows.Forms.TextBox();
+            this.lblSplit = new System.Windows.Forms.Label();
             this.pnlHowMany.SuspendLayout();
+            this.pnlSplit.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // _btnCancel
-            // 
-            this._btnCancel.Location = new System.Drawing.Point(176, 182);
-            this._btnCancel.Name = "_btnCancel";
-            this._btnCancel.Size = new System.Drawing.Size(75, 23);
-            this._btnCancel.TabIndex = 0;
-            this._btnCancel.Text = "Cancel";
-            this._btnCancel.UseVisualStyleBackColor = true;
-            this._btnCancel.Click += new System.EventHandler(this._btnCancel_Click);
-            // 
-            // _btnOK
-            // 
-            this._btnOK.Location = new System.Drawing.Point(21, 182);
-            this._btnOK.Name = "_btnOK";
-            this._btnOK.Size = new System.Drawing.Size(75, 23);
-            this._btnOK.TabIndex = 1;
-            this._btnOK.Text = "OK";
-            this._btnOK.UseVisualStyleBackColor = true;
-            this._btnOK.Click += new System.EventHandler(this._btnOK_Click);
             // 
             // pnlHowMany
             // 
-            this.pnlHowMany.Controls.Add(this.lblHowMany);
+            this.pnlHowMany.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlHowMany.Controls.Add(this.cbxHowMany);
-            this.pnlHowMany.Location = new System.Drawing.Point(21, 31);
+            this.pnlHowMany.Controls.Add(this.lblHowMany);
+            this.pnlHowMany.Location = new System.Drawing.Point(2, 11);
             this.pnlHowMany.Name = "pnlHowMany";
-            this.pnlHowMany.Size = new System.Drawing.Size(200, 100);
-            this.pnlHowMany.TabIndex = 2;
+            this.pnlHowMany.Size = new System.Drawing.Size(280, 196);
+            this.pnlHowMany.TabIndex = 0;
             // 
             // cbxHowMany
             // 
-            this.cbxHowMany.FormattingEnabled = true;
+            this.cbxHowMany.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbxHowMany.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxHowMany.Items.AddRange(new object[] {
             "2",
             "3",
@@ -78,43 +67,103 @@
             "8",
             "9",
             "10"});
-            this.cbxHowMany.Location = new System.Drawing.Point(76, 34);
+            this.cbxHowMany.Location = new System.Drawing.Point(80, 65);
             this.cbxHowMany.Name = "cbxHowMany";
             this.cbxHowMany.Size = new System.Drawing.Size(121, 21);
-            this.cbxHowMany.TabIndex = 0;
+            this.cbxHowMany.TabIndex = 1;
             // 
             // lblHowMany
             // 
-            this.lblHowMany.AutoSize = true;
-            this.lblHowMany.Location = new System.Drawing.Point(4, 41);
+            this.lblHowMany.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblHowMany.Location = new System.Drawing.Point(48, 28);
             this.lblHowMany.Name = "lblHowMany";
-            this.lblHowMany.Size = new System.Drawing.Size(57, 13);
-            this.lblHowMany.TabIndex = 1;
-            this.lblHowMany.Text = "How many";
+            this.lblHowMany.Size = new System.Drawing.Size(186, 37);
+            this.lblHowMany.TabIndex = 0;
+            this.lblHowMany.Text = "How many endnotes would you like to split the base into?";
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.Location = new System.Drawing.Point(206, 212);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 1;
+            this.btnCancel.Text = "Cancel";
+            // 
+            // btnOK
+            // 
+            this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOK.Location = new System.Drawing.Point(123, 212);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(75, 23);
+            this.btnOK.TabIndex = 2;
+            this.btnOK.Text = "OK";
+            // 
+            // pnlSplit
+            // 
+            this.pnlSplit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlSplit.Controls.Add(this.txtSplit);
+            this.pnlSplit.Controls.Add(this.lblSplit);
+            this.pnlSplit.Location = new System.Drawing.Point(2, 3);
+            this.pnlSplit.Name = "pnlSplit";
+            this.pnlSplit.Size = new System.Drawing.Size(280, 196);
+            this.pnlSplit.TabIndex = 3;
+            this.pnlSplit.Visible = false;
+            // 
+            // txtSplit
+            // 
+            this.txtSplit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSplit.Location = new System.Drawing.Point(6, 49);
+            this.txtSplit.Multiline = true;
+            this.txtSplit.Name = "txtSplit";
+            this.txtSplit.ReadOnly = true;
+            this.txtSplit.Size = new System.Drawing.Size(268, 133);
+            this.txtSplit.TabIndex = 1;
+            // 
+            // lblSplit
+            // 
+            this.lblSplit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblSplit.Location = new System.Drawing.Point(5, 3);
+            this.lblSplit.Name = "lblSplit";
+            this.lblSplit.Size = new System.Drawing.Size(269, 40);
+            this.lblSplit.TabIndex = 0;
+            this.lblSplit.Text = "Click where you would like the first endnote to end.  The system will highlight f" +
+    "rom the beginning to the point of your click.";
             // 
             // frmBreakUp
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+            this.ClientSize = new System.Drawing.Size(285, 240);
+            this.Controls.Add(this.btnOK);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.pnlSplit);
             this.Controls.Add(this.pnlHowMany);
-            this.Controls.Add(this._btnOK);
-            this.Controls.Add(this._btnCancel);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(296, 270);
             this.Name = "frmBreakUp";
-            this.Text = "frmBreakUp";
-            this.Load += new System.EventHandler(this.frmBreakUp_Load);
+            this.Text = "Break Up a Single Endnote";
             this.pnlHowMany.ResumeLayout(false);
-            this.pnlHowMany.PerformLayout();
+            this.pnlSplit.ResumeLayout(false);
+            this.pnlSplit.PerformLayout();
             this.ResumeLayout(false);
 
         }
-
         #endregion
 
-        private System.Windows.Forms.Button _btnCancel;
-        private System.Windows.Forms.Button _btnOK;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Panel pnlHowMany;
+        private System.Windows.Forms.Panel pnlSplit;
         private System.Windows.Forms.Label lblHowMany;
+        private System.Windows.Forms.Label lblSplit;
+        private System.Windows.Forms.TextBox txtSplit;
         private System.Windows.Forms.ComboBox cbxHowMany;
     }
 }
