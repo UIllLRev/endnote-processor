@@ -90,6 +90,7 @@
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "Cancel";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnOK
             // 
@@ -99,6 +100,7 @@
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 2;
             this.btnOK.Text = "OK";
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // pnlSplit
             // 
@@ -124,6 +126,7 @@
             this.txtSplit.ReadOnly = true;
             this.txtSplit.Size = new System.Drawing.Size(268, 133);
             this.txtSplit.TabIndex = 1;
+            this.txtSplit.Click += new System.EventHandler(this.txtSplit_Click);
             // 
             // lblSplit
             // 
