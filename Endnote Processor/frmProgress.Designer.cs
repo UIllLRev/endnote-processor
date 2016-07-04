@@ -1,4 +1,6 @@
-﻿namespace FirstVistaTest
+﻿using System.Drawing;
+using System.Windows.Forms;
+namespace FirstVistaTest
 {
     partial class frmProgress
     {
@@ -41,28 +43,27 @@
             // 
             // lblProcessing
             // 
-            this.lblProcessing.AutoSize = true;
             this.lblProcessing.Location = new System.Drawing.Point(69, 32);
             this.lblProcessing.Name = "lblProcessing";
-            this.lblProcessing.Size = new System.Drawing.Size(68, 13);
+            this.lblProcessing.Size = new System.Drawing.Size(100, 16);
             this.lblProcessing.TabIndex = 1;
             this.lblProcessing.Text = "Processing...";
             // 
             // frmProgress
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+            this.ClientSize = new System.Drawing.Size(230, 59);
             this.Controls.Add(this.lblProcessing);
             this.Controls.Add(this.prgBar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmProgress";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Processing Endnotes";
-            this.Load += new System.EventHandler(this.frmProgress_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
-        }
-
+		}
         #endregion
 
         private System.Windows.Forms.ProgressBar prgBar;
