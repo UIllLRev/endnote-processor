@@ -285,6 +285,9 @@
             this.MinimumSize = new System.Drawing.Size(536, 370);
             this.Name = "ProcessingForm";
             this.Text = "Processing Endnotes";
+            this.Closing += new System.ComponentModel.CancelEventHandler(this.ProcessingForm_Closing);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ProcessingForm_KeyDown);
+            this.Load += new System.EventHandler(this.ProcessingForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.gbxType.ResumeLayout(false);

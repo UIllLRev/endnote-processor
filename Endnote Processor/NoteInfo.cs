@@ -1,13 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System;
 
 namespace FirstVistaTest
 {
-    class NoteInfo
-    {
-        public bool SupraOrId = false;
-        public int Type = 0;
-        public bool Processed = false;
-    }
+	public class NoteInfo
+	{
+		public bool SupraOrId;
+
+		public int Type;
+
+		public bool Processed;
+
+		public NoteInfo()
+		{
+			this.SupraOrId = false;
+			this.Type = 0;
+			this.Processed = false;
+		}
+
+		public NoteInfo copy()
+		{
+			return new NoteInfo
+			{
+				Processed = this.Processed,
+				Type = this.Type,
+				SupraOrId = this.SupraOrId
+			};
+		}
+	}
 }

@@ -25,7 +25,6 @@ namespace FirstVistaTest
 
         public frmBreakUp()
         {
-            base.add_Load(new EventHandler(this.frmBreakUp_Load));
             this.iPanelCnt = 0;
             this.bCancel = true;
             this.iDivCnt = 1;
@@ -36,13 +35,13 @@ namespace FirstVistaTest
 
         private void frmBreakUp_Load(object sender, EventArgs e)
         {
-            this.cbxHowMany.set_SelectedIndex(0);
-            this.pnlSplit.set_Visible(false);
+            this.cbxHowMany.SelectedIndex = 0;
+            this.pnlSplit.Visible = false;
             this.pnlSplit.SendToBack();
-            this.pnlHowMany.set_Visible(true);
+            this.pnlHowMany.Visible = true;
             this.pnlHowMany.BringToFront();
-            this.btnOK.set_Text("Next");
-            this.txtSplit.set_Text(StringType.FromObject(this.parentfrm.sEndNoteArray.get_Item(this.iIndex)));
+            this.btnOK.Text = "Next";
+            this.txtSplit.Text = (string)this.parentfrm.sEndNoteArray[iIndex];
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -57,56 +56,56 @@ namespace FirstVistaTest
             {
                 if (this.iPanelCnt == 0)
                 {
-                    this.iDivCnt = int.Parse(StringType.FromObject(this.cbxHowMany.get_SelectedItem()));
-                    this.pnlHowMany.set_Visible(false);
+                    this.iDivCnt = int.Parse((string)this.cbxHowMany.SelectedItem);
+                    this.pnlHowMany.Visible = false;
                     this.pnlHowMany.SendToBack();
-                    this.pnlSplit.set_Visible(true);
+                    this.pnlSplit.Visible = true;
                     this.pnlSplit.BringToFront();
                     this.iPanelCnt++;
                     if (this.iDivCnt == 2)
                     {
-                        this.btnOK.set_Text("OK");
+                        this.btnOK.Text = "OK";
                     }
-                    this.set_Text("Break " + StringType.FromInteger(this.iPanelCnt) + " of " + StringType.FromInteger(this.iDivCnt));
+                    this.Text = "Break " + this.iPanelCnt.ToString() + " of " + this.iDivCnt.ToString();
                 }
                 else if (this.iPanelCnt > 0)
                 {
                     switch (this.iPanelCnt)
                     {
                     case 1:
-                        this.lblSplit.set_Text("Click where you would like the second endnote to end.  The system will highlight from the beginning to the point of your click.");
+                        this.lblSplit.Text = "Click where you would like the second endnote to end.  The system will highlight from the beginning to the point of your click.";
                         break;
                     case 2:
-                        this.lblSplit.set_Text("Click where you would like the third endnote to end.  The system will highlight from the beginning to the point of your click.");
+                        this.lblSplit.Text = "Click where you would like the third endnote to end.  The system will highlight from the beginning to the point of your click.";
                         break;
                     case 3:
-                        this.lblSplit.set_Text("Click where you would like the fourth endnote to end.  The system will highlight from the beginning to the point of your click.");
+                        this.lblSplit.Text = "Click where you would like the fourth endnote to end.  The system will highlight from the beginning to the point of your click.";
                         break;
                     case 4:
-                        this.lblSplit.set_Text("Click where you would like the fifth endnote to end.  The system will highlight from the beginning to the point of your click.");
+                        this.lblSplit.Text = "Click where you would like the fifth endnote to end.  The system will highlight from the beginning to the point of your click.";
                         break;
                     case 5:
-                        this.lblSplit.set_Text("Click where you would like the sixth endnote to end.  The system will highlight from the beginning to the point of your click.");
+                        this.lblSplit.Text = "Click where you would like the sixth endnote to end.  The system will highlight from the beginning to the point of your click.";
                         break;
                     case 6:
-                        this.lblSplit.set_Text("Click where you would like the seventh endnote to end.  The system will highlight from the beginning to the point of your click.");
+                        this.lblSplit.Text = "Click where you would like the seventh endnote to end.  The system will highlight from the beginning to the point of your click.";
                         break;
                     case 7:
-                        this.lblSplit.set_Text("Click where you would like the eighth endnote to end.  The system will highlight from the beginning to the point of your click.");
+                        this.lblSplit.Text = "Click where you would like the eighth endnote to end.  The system will highlight from the beginning to the point of your click.";
                         break;
                     case 8:
-                        this.lblSplit.set_Text("Click where you would like the ninth endnote to end.  The system will highlight from the beginning to the point of your click.");
+                        this.lblSplit.Text = "Click where you would like the ninth endnote to end.  The system will highlight from the beginning to the point of your click.";
                         break;
                     }
-                    this.parentfrm.sEndNoteArray.set_Item(this.iIndex, this.txtSplit.get_Text().Substring(0, this.iCnt).Trim());
-                    this.parentfrm.sEndNoteArray.Insert(this.iIndex + 1, this.txtSplit.get_Text().Substring(this.iCnt).Trim());
-                    NoteInfo noteInfo = (NoteInfo)this.parentfrm.sEndNoteInfo.get_Item(this.iIndex);
-                    this.parentfrm.sEndNoteInfo.Insert(this.iIndex + 1, noteInfo.copy());
-                    this.txtSplit.set_Text(this.txtSplit.get_Text().Substring(this.iCnt).Trim());
-                    this.iIndex++;
+                    this.parentfrm.sEndNoteArray[iIndex] = txtSplit.Text.Substring(0, this.iCnt).Trim();
+                    this.parentfrm.sEndNoteArray.Insert(iIndex + 1, txtSplit.Text.Substring(this.iCnt).Trim());
+                    NoteInfo noteInfo = (NoteInfo)parentfrm.sEndNoteInfo[iIndex];
+                    parentfrm.sEndNoteInfo.Insert(iIndex + 1, noteInfo.copy());
+                    txtSplit.Text = txtSplit.Text.Substring(iCnt).Trim();
+                    iIndex++;
                     if (this.iPanelCnt == this.iDivCnt - 2)
                     {
-                        this.btnOK.set_Text("OK");
+                        this.btnOK.Text = "OK";
                     }
                     else if (this.iPanelCnt == this.iDivCnt - 1)
                     {
@@ -114,8 +113,8 @@ namespace FirstVistaTest
                         this.Close();
                     }
                     this.iPanelCnt++;
-                    this.set_Text("Break " + StringType.FromInteger(this.iPanelCnt) + " of " + StringType.FromInteger(this.iDivCnt));
-                    this.btnCancel.set_Text("Close");
+                    this.Text = "Break " + iPanelCnt.ToString() + " of " + this.iDivCnt.ToString();
+                    this.btnCancel.Text = "Close";
                 }
                 this.bNextClick = false;
             }
@@ -125,8 +124,8 @@ namespace FirstVistaTest
         {
             if (!this.bNextClick)
             {
-                this.iCnt = this.txtSplit.get_SelectionStart();
-                this.txtSplit.Select(0, this.txtSplit.get_SelectionStart());
+                iCnt = txtSplit.SelectionStart;
+                txtSplit.Select(0, txtSplit.SelectionStart);
             }
         }
     }

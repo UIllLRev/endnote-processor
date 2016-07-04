@@ -61,9 +61,10 @@ namespace FirstVistaTest
             this.Name = "frmProgress";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Processing Endnotes";
+            this.Load += new System.EventHandler(this.frmProgress_Load);
             this.ResumeLayout(false);
 
-		}
+        }
         #endregion
 
         private System.Windows.Forms.ProgressBar prgBar;

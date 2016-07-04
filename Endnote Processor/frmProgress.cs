@@ -12,39 +12,38 @@ namespace FirstVistaTest
     {
         public frmProgress()
         {
-            base.add_Load(new EventHandler(this.frmProgress_Load));
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         private void frmProgress_Load(object sender, EventArgs e)
         {
-            this.prgBar.set_Minimum(0);
-            this.prgBar.set_Maximum(100);
-            this.prgBar.set_Step(1);
-            this.prgBar.set_Value(0);
+            prgBar.Minimum = 0;
+            prgBar.Maximum = 100;
+            prgBar.Step = 1;
+            prgBar.Value = 0;
         }
 
         public void ResetBar()
         {
-            this.prgBar.set_Value(0);
+            prgBar.Value = 0;
             Application.DoEvents();
         }
 
         public void SetMaxVal(int max)
         {
-            this.prgBar.set_Maximum(max);
+            prgBar.Maximum = max;
             Application.DoEvents();
         }
 
         public void SetMinVal(int min)
         {
-            this.prgBar.set_Minimum(min);
+            prgBar.Minimum = min;
             Application.DoEvents();
         }
 
         public void StepUp(int stepSize)
         {
-            this.prgBar.set_Value(checked(this.prgBar.get_Value() + stepSize));
+            prgBar.Value = prgBar.Value + stepSize;
             Application.DoEvents();
         }
     }

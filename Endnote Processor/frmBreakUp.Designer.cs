@@ -149,6 +149,7 @@
             this.MinimumSize = new System.Drawing.Size(296, 270);
             this.Name = "frmBreakUp";
             this.Text = "Break Up a Single Endnote";
+            this.Load += new System.EventHandler(this.frmBreakUp_Load);
             this.pnlHowMany.ResumeLayout(false);
             this.pnlSplit.ResumeLayout(false);
             this.pnlSplit.PerformLayout();
