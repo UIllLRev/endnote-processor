@@ -29,138 +29,294 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.mnFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnExport = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnClose = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnOpenPart = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnSaveProg = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnExit = new System.Windows.Forms.ToolStripMenuItem();
             this.txtENText = new System.Windows.Forms.TextBox();
+            this.lblENText = new System.Windows.Forms.Label();
             this.lstNotes = new System.Windows.Forms.ListBox();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportCSVsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.openPartialEditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveProgressToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chkSupra = new System.Windows.Forms.CheckBox();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.btnPrev = new System.Windows.Forms.Button();
+            this.btnBreak = new System.Windows.Forms.Button();
+            this.gbxType = new System.Windows.Forms.GroupBox();
+            this.rbMiscellaneous = new System.Windows.Forms.RadioButton();
+            this.rbPeriodical = new System.Windows.Forms.RadioButton();
+            this.rbLegislative = new System.Windows.Forms.RadioButton();
+            this.rbCase = new System.Windows.Forms.RadioButton();
+            this.rbBooks = new System.Windows.Forms.RadioButton();
+            this.rbJournal = new System.Windows.Forms.RadioButton();
             this.menuStrip1.SuspendLayout();
+            this.gbxType.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.mnFile});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(484, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(520, 24);
             this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // mnFile
+            // 
+            this.mnFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnOpen,
+            this.mnExport,
+            this.mnClose,
+            this.toolStripMenuItem1,
+            this.mnOpenPart,
+            this.mnSaveProg,
+            this.toolStripMenuItem2,
+            this.mnExit});
+            this.mnFile.Name = "mnFile";
+            this.mnFile.Size = new System.Drawing.Size(37, 20);
+            this.mnFile.Text = "File";
+            // 
+            // mnOpen
+            // 
+            this.mnOpen.Name = "mnOpen";
+            this.mnOpen.Size = new System.Drawing.Size(203, 22);
+            this.mnOpen.Text = "Open Word Document...";
+            // 
+            // mnExport
+            // 
+            this.mnExport.Enabled = false;
+            this.mnExport.Name = "mnExport";
+            this.mnExport.Size = new System.Drawing.Size(203, 22);
+            this.mnExport.Text = "Export CSVs...";
+            // 
+            // mnClose
+            // 
+            this.mnClose.Enabled = false;
+            this.mnClose.Name = "mnClose";
+            this.mnClose.Size = new System.Drawing.Size(203, 22);
+            this.mnClose.Text = "Close Document";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(203, 22);
+            this.toolStripMenuItem1.Text = "-";
+            // 
+            // mnOpenPart
+            // 
+            this.mnOpenPart.Name = "mnOpenPart";
+            this.mnOpenPart.Size = new System.Drawing.Size(203, 22);
+            this.mnOpenPart.Text = "Open Partial Edit...";
+            // 
+            // mnSaveProg
+            // 
+            this.mnSaveProg.Enabled = false;
+            this.mnSaveProg.Name = "mnSaveProg";
+            this.mnSaveProg.Size = new System.Drawing.Size(203, 22);
+            this.mnSaveProg.Text = "Save Progress...";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(203, 22);
+            this.toolStripMenuItem2.Text = "-";
+            // 
+            // mnExit
+            // 
+            this.mnExit.Name = "mnExit";
+            this.mnExit.Size = new System.Drawing.Size(203, 22);
+            this.mnExit.Text = "Exit";
             // 
             // txtENText
             // 
+            this.txtENText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtENText.Enabled = false;
             this.txtENText.Location = new System.Drawing.Point(184, 16);
             this.txtENText.Multiline = true;
             this.txtENText.Name = "txtENText";
             this.txtENText.Size = new System.Drawing.Size(200, 256);
             this.txtENText.TabIndex = 1;
             // 
+            // lblENText
+            // 
+            this.lblENText.Location = new System.Drawing.Point(184, 0);
+            this.lblENText.Name = "lblENText";
+            this.lblENText.Size = new System.Drawing.Size(100, 23);
+            this.lblENText.TabIndex = 2;
+            this.lblENText.Text = "Endnote Text";
+            // 
             // lstNotes
             // 
-            this.lstNotes.FormattingEnabled = true;
+            this.lstNotes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.lstNotes.IntegralHeight = false;
-            this.lstNotes.Location = new System.Drawing.Point(2, 16);
+            this.lstNotes.Location = new System.Drawing.Point(0, 0);
             this.lstNotes.Name = "lstNotes";
             this.lstNotes.Size = new System.Drawing.Size(176, 320);
-            this.lstNotes.TabIndex = 2;
+            this.lstNotes.TabIndex = 3;
             // 
-            // openToolStripMenuItem
+            // chkSupra
             // 
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.openToolStripMenuItem.Text = "Open";
-            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            this.chkSupra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkSupra.Enabled = false;
+            this.chkSupra.Location = new System.Drawing.Point(392, 24);
+            this.chkSupra.Name = "chkSupra";
+            this.chkSupra.Size = new System.Drawing.Size(120, 40);
+            this.chkSupra.TabIndex = 4;
+            this.chkSupra.Text = "Exclude from Exports";
             // 
-            // exportCSVsToolStripMenuItem
+            // btnNext
             // 
-            this.exportCSVsToolStripMenuItem.Name = "exportCSVsToolStripMenuItem";
-            this.exportCSVsToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.exportCSVsToolStripMenuItem.Text = "Export CSVs";
-            this.exportCSVsToolStripMenuItem.Click += new System.EventHandler(this.exportCSVsToolStripMenuItem_Click);
+            this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNext.Enabled = false;
+            this.btnNext.Location = new System.Drawing.Point(440, 288);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(75, 23);
+            this.btnNext.TabIndex = 5;
+            this.btnNext.Text = "Next ->";
             // 
-            // toolStripMenuItem1
+            // btnPrev
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(168, 6);
+            this.btnPrev.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrev.Enabled = false;
+            this.btnPrev.Location = new System.Drawing.Point(360, 288);
+            this.btnPrev.Name = "btnPrev";
+            this.btnPrev.Size = new System.Drawing.Size(75, 23);
+            this.btnPrev.TabIndex = 6;
+            this.btnPrev.Text = "<- Previous";
             // 
-            // openPartialEditToolStripMenuItem
+            // btnBreak
             // 
-            this.openPartialEditToolStripMenuItem.Name = "openPartialEditToolStripMenuItem";
-            this.openPartialEditToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.openPartialEditToolStripMenuItem.Text = "Open Partial Edit...";
-            this.openPartialEditToolStripMenuItem.Click += new System.EventHandler(this.openPartialEditToolStripMenuItem_Click);
+            this.btnBreak.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnBreak.Enabled = false;
+            this.btnBreak.Location = new System.Drawing.Point(216, 288);
+            this.btnBreak.Name = "btnBreak";
+            this.btnBreak.Size = new System.Drawing.Size(75, 23);
+            this.btnBreak.TabIndex = 7;
+            this.btnBreak.Text = "Break Up";
             // 
-            // saveProgressToolStripMenuItem
+            // gbxType
             // 
-            this.saveProgressToolStripMenuItem.Name = "saveProgressToolStripMenuItem";
-            this.saveProgressToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.saveProgressToolStripMenuItem.Text = "Save Progress...";
-            this.saveProgressToolStripMenuItem.Click += new System.EventHandler(this.saveProgressToolStripMenuItem_Click);
+            this.gbxType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbxType.Controls.Add(this.rbMiscellaneous);
+            this.gbxType.Controls.Add(this.rbPeriodical);
+            this.gbxType.Controls.Add(this.rbLegislative);
+            this.gbxType.Controls.Add(this.rbCase);
+            this.gbxType.Controls.Add(this.rbBooks);
+            this.gbxType.Controls.Add(this.rbJournal);
+            this.gbxType.Enabled = false;
+            this.gbxType.Location = new System.Drawing.Point(392, 72);
+            this.gbxType.Name = "gbxType";
+            this.gbxType.Size = new System.Drawing.Size(120, 160);
+            this.gbxType.TabIndex = 8;
+            this.gbxType.TabStop = false;
+            this.gbxType.Text = "Type of Reference";
             // 
-            // toolStripMenuItem2
+            // rbMiscellaneous
             // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(168, 6);
+            this.rbMiscellaneous.Location = new System.Drawing.Point(8, 136);
+            this.rbMiscellaneous.Name = "rbMiscellaneous";
+            this.rbMiscellaneous.Size = new System.Drawing.Size(96, 16);
+            this.rbMiscellaneous.TabIndex = 5;
+            this.rbMiscellaneous.Text = "Miscellaneous";
             // 
-            // exitToolStripMenuItem
+            // rbPeriodical
             // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            this.rbPeriodical.Location = new System.Drawing.Point(8, 112);
+            this.rbPeriodical.Name = "rbPeriodical";
+            this.rbPeriodical.Size = new System.Drawing.Size(96, 16);
+            this.rbPeriodical.TabIndex = 4;
+            this.rbPeriodical.Text = "Periodical";
             // 
-            // fileToolStripMenuItem
+            // rbLegislative
             // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openToolStripMenuItem,
-            this.exportCSVsToolStripMenuItem,
-            this.toolStripMenuItem1,
-            this.openPartialEditToolStripMenuItem,
-            this.saveProgressToolStripMenuItem,
-            this.toolStripMenuItem2,
-            this.exitToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
+            this.rbLegislative.Location = new System.Drawing.Point(8, 88);
+            this.rbLegislative.Name = "rbLegislative";
+            this.rbLegislative.Size = new System.Drawing.Size(96, 16);
+            this.rbLegislative.TabIndex = 3;
+            this.rbLegislative.Text = "Legislative";
+            // 
+            // rbCase
+            // 
+            this.rbCase.Location = new System.Drawing.Point(8, 64);
+            this.rbCase.Name = "rbCase";
+            this.rbCase.Size = new System.Drawing.Size(96, 16);
+            this.rbCase.TabIndex = 2;
+            this.rbCase.Text = "Case";
+            // 
+            // rbBooks
+            // 
+            this.rbBooks.Location = new System.Drawing.Point(8, 40);
+            this.rbBooks.Name = "rbBooks";
+            this.rbBooks.Size = new System.Drawing.Size(96, 16);
+            this.rbBooks.TabIndex = 1;
+            this.rbBooks.Text = "Book";
+            // 
+            // rbJournal
+            // 
+            this.rbJournal.Location = new System.Drawing.Point(8, 16);
+            this.rbJournal.Name = "rbJournal";
+            this.rbJournal.Size = new System.Drawing.Size(96, 16);
+            this.rbJournal.TabIndex = 0;
+            this.rbJournal.Text = "Journal";
             // 
             // ProcessingForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 461);
+            this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+            this.ClientSize = new System.Drawing.Size(520, 334);
+            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.gbxType);
+            this.Controls.Add(this.btnBreak);
+            this.Controls.Add(this.btnPrev);
+            this.Controls.Add(this.btnNext);
+            this.Controls.Add(this.chkSupra);
             this.Controls.Add(this.lstNotes);
             this.Controls.Add(this.txtENText);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.lblENText);
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
+            this.MinimumSize = new System.Drawing.Size(536, 370);
             this.Name = "ProcessingForm";
-            this.Text = "ProcessingForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProcessingForm_FormClosing);
-            this.Load += new System.EventHandler(this.ProcessingForm_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ProcessingForm_KeyDown);
+            this.Text = "Processing Endnotes";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.gbxType.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
-
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.Label lblENText;
         private System.Windows.Forms.TextBox txtENText;
         private System.Windows.Forms.ListBox lstNotes;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exportCSVsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem openPartialEditToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveProgressToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.CheckBox chkSupra;
+        private System.Windows.Forms.RadioButton rbBooks;
+        private System.Windows.Forms.RadioButton rbJournal;
+        private System.Windows.Forms.RadioButton rbCase;
+        private System.Windows.Forms.RadioButton rbLegislative;
+        private System.Windows.Forms.RadioButton rbPeriodical;
+        private System.Windows.Forms.RadioButton rbMiscellaneous;
+        private System.Windows.Forms.Button btnBreak;
+        private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.Button btnPrev;
+        private System.Windows.Forms.GroupBox gbxType;
+        private System.Windows.Forms.ToolStripMenuItem mnFile;
+        private System.Windows.Forms.ToolStripMenuItem mnOpen;
+        private System.Windows.Forms.ToolStripMenuItem mnExport;
+        private System.Windows.Forms.ToolStripMenuItem mnOpenPart;
+        private System.Windows.Forms.ToolStripMenuItem mnSaveProg;
+        private System.Windows.Forms.ToolStripMenuItem mnExit;
+        private System.Windows.Forms.ToolStripMenuItem mnClose;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
     }
 }
