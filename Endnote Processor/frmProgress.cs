@@ -16,15 +16,6 @@ namespace FirstVistaTest
             this.InitializeComponent();
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && this.components != null)
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
         private void frmProgress_Load(object sender, EventArgs e)
         {
             this.prgBar.set_Minimum(0);

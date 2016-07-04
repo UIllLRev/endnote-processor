@@ -1,6 +1,4 @@
 using Microsoft.Office.Interop.Word;
-using Microsoft.VisualBasic;
-using Microsoft.VisualBasic.CompilerServices;
 using System;
 using System.Collections;
 using System.ComponentModel;
@@ -9,14 +7,13 @@ using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Resources;
-using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
 namespace FirstVistaTest
 {
     public partial class ProcessingForm : Form
     {
-        private Application oWordApp;
+        private Microsoft.Office.Interop.Word.Application oWordApp;
 
         private Document oWordDoc;
 
@@ -69,15 +66,6 @@ namespace FirstVistaTest
             this.isUpdate = false;
             this.oldSelectedIndex = 0;
             this.InitializeComponent();
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && this.components != null)
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
         }
 
         private void mnExit_Click(object sender, EventArgs e)

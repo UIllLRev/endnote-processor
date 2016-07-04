@@ -34,15 +34,6 @@ namespace FirstVistaTest
             this.InitializeComponent();
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && this.components != null)
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
         private void frmBreakUp_Load(object sender, EventArgs e)
         {
             this.cbxHowMany.set_SelectedIndex(0);
