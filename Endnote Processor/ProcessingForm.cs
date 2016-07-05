@@ -1,21 +1,18 @@
-using Microsoft.Office.Interop.Word;
 using System;
 using System.Collections;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Reflection;
-using System.Resources;
 using System.Windows.Forms;
+using System.Linq;
+using System.Xml.Linq;
+
+using DocumentFormat.OpenXml.Packaging;
 
 namespace FirstVistaTest
 {
     public partial class ProcessingForm : Form
     {
-        private Microsoft.Office.Interop.Word.Application oWordApp;
-
-        private Document oWordDoc;
+        private WordprocessingDocument oWordDoc;
 
         public ArrayList sEndNoteArray;
 
@@ -125,11 +122,7 @@ namespace FirstVistaTest
                     }
                 }
             }
-            if (this.oWordApp != null)
-            {
-                oWordApp.Quit();
-                this.oWordApp = null;
-            }
+
             this.bExitGenerated = true;
             this.Close();
         }
@@ -148,27 +141,30 @@ namespace FirstVistaTest
                     openFileDialog.CheckFileExists = true;
                     if (openFileDialog.ShowDialog() == DialogResult.OK)
                     {
-                        oWordDoc = oWordApp.Documents.Open(openFileDialog.FileName);
-                        if (this.oWordDoc.Endnotes.Count > 0)
+                        oWordDoc = WordprocessingDocument.Open(openFileDialog.FileName, false);
+                        XElement xmlDoc = oWordDoc.MainDocumentPart.EndnotesPart.GetXDocument().Root;
+                        if (xmlDoc.HasElements)
                         {
                             frmProgress frmProgress = new frmProgress();
                             frmProgress.Show();
                             frmProgress.SetMinVal(0);
-                            frmProgress.SetMaxVal(this.oWordDoc.Endnotes.Count);
+                            frmProgress.SetMaxVal(xmlDoc.Elements().Count());
                             this.sEndNoteArray = new ArrayList();
                             this.sEndNoteInfo = new ArrayList();
                             int i = 0;
                             NoteInfo noteInfo = new NoteInfo();
-                            int num = this.oWordDoc.Endnotes.Count - 1;
-                            for (i = 0; i <= num; i++)
+                            foreach (XElement q in xmlDoc.Elements())
                             {
                                 try
                                 {
-                                    if (oWordDoc.Endnotes[i + 1].Range.Text != null)
+                                    if (q.Value != null && q.Value.Length > 0)
                                     {
-                                        sEndNoteArray.Add(oWordDoc.Endnotes[i + 1].Range.Text.Trim());
+                                        string text = q.Value.Trim();
+                                        if (text[0] == '.')
+                                            text = text.Substring(1).Trim();
+                                        sEndNoteArray.Add(text);
                                         sEndNoteInfo.Add(new NoteInfo());
-                                        if (oWordDoc.Endnotes[i + 1].Range.Text.Trim().ToLower().IndexOf("id.") >= 0 | this.oWordDoc.Endnotes[i + 1].Range.Text.Trim().ToLower().IndexOf("supra") >= 0 | this.oWordDoc.Endnotes[i + 1].Range.Text.Trim().ToLower().IndexOf("need cite") >= 0)
+                                        if (text.IndexOf("id.", StringComparison.InvariantCultureIgnoreCase) >= 0 | text.IndexOf("supra", StringComparison.InvariantCultureIgnoreCase) >= 0 | text.IndexOf("need cite", StringComparison.InvariantCultureIgnoreCase) >= 0)
                                         {
                                             noteInfo = (NoteInfo)this.sEndNoteInfo[sEndNoteInfo.Count - 1];
                                             noteInfo.SupraOrId = true;
@@ -276,7 +272,6 @@ namespace FirstVistaTest
         {
             try
             {
-                oWordApp = new ApplicationClass();
                 sEndNoteArray = new ArrayList();
                 sEndNoteInfo = new ArrayList();
                 mnClose.Enabled = false;
@@ -794,11 +789,6 @@ namespace FirstVistaTest
                             this.SaveProgress();
                         }
                     }
-                }
-                if (this.oWordApp != null)
-                {
-                    oWordApp.Quit();
-                    oWordApp = null;
                 }
             }
         }
