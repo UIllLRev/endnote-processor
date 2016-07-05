@@ -33,10 +33,8 @@
             this.mnOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.mnExport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnClose = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.mnOpenPart = new System.Windows.Forms.ToolStripMenuItem();
             this.mnSaveProg = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.mnExit = new System.Windows.Forms.ToolStripMenuItem();
             this.txtENText = new System.Windows.Forms.TextBox();
             this.lblENText = new System.Windows.Forms.Label();
@@ -52,6 +50,8 @@
             this.rbCase = new System.Windows.Forms.RadioButton();
             this.rbBooks = new System.Windows.Forms.RadioButton();
             this.rbJournal = new System.Windows.Forms.RadioButton();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.gbxType.SuspendLayout();
             this.SuspendLayout();
@@ -78,63 +78,54 @@
             this.mnExit});
             this.mnFile.Name = "mnFile";
             this.mnFile.Size = new System.Drawing.Size(37, 20);
-            this.mnFile.Text = "File";
+            this.mnFile.Text = "&File";
             // 
             // mnOpen
             // 
             this.mnOpen.Name = "mnOpen";
-            this.mnOpen.Size = new System.Drawing.Size(203, 22);
-            this.mnOpen.Text = "Open Word Document...";
+            this.mnOpen.ShortcutKeyDisplayString = "Ctrl+O";
+            this.mnOpen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.mnOpen.Size = new System.Drawing.Size(246, 22);
+            this.mnOpen.Text = "&Open Word Document...";
             this.mnOpen.Click += new System.EventHandler(this.mnOpen_Click);
             // 
             // mnExport
             // 
             this.mnExport.Enabled = false;
             this.mnExport.Name = "mnExport";
-            this.mnExport.Size = new System.Drawing.Size(203, 22);
-            this.mnExport.Text = "Export CSVs...";
+            this.mnExport.Size = new System.Drawing.Size(246, 22);
+            this.mnExport.Text = "&Export CSVs...";
             this.mnExport.Click += new System.EventHandler(this.mnExport_Click);
             // 
             // mnClose
             // 
             this.mnClose.Enabled = false;
             this.mnClose.Name = "mnClose";
-            this.mnClose.Size = new System.Drawing.Size(203, 22);
-            this.mnClose.Text = "Close Document";
+            this.mnClose.Size = new System.Drawing.Size(246, 22);
+            this.mnClose.Text = "&Close Document";
             this.mnClose.Click += new System.EventHandler(this.mnClose_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(203, 22);
-            this.toolStripMenuItem1.Text = "-";
             // 
             // mnOpenPart
             // 
             this.mnOpenPart.Name = "mnOpenPart";
-            this.mnOpenPart.Size = new System.Drawing.Size(203, 22);
-            this.mnOpenPart.Text = "Open Partial Edit...";
+            this.mnOpenPart.Size = new System.Drawing.Size(246, 22);
+            this.mnOpenPart.Text = "Open &Partial Edit...";
             this.mnOpenPart.Click += new System.EventHandler(this.mnOpenPart_Click);
             // 
             // mnSaveProg
             // 
             this.mnSaveProg.Enabled = false;
             this.mnSaveProg.Name = "mnSaveProg";
-            this.mnSaveProg.Size = new System.Drawing.Size(203, 22);
-            this.mnSaveProg.Text = "Save Progress...";
+            this.mnSaveProg.Size = new System.Drawing.Size(246, 22);
+            this.mnSaveProg.Text = "&Save Progress...";
             this.mnSaveProg.Click += new System.EventHandler(this.mnSaveProg_Click);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(203, 22);
-            this.toolStripMenuItem2.Text = "-";
             // 
             // mnExit
             // 
             this.mnExit.Name = "mnExit";
-            this.mnExit.Size = new System.Drawing.Size(203, 22);
-            this.mnExit.Text = "Exit";
+            this.mnExit.ShortcutKeyDisplayString = "Alt+F4";
+            this.mnExit.Size = new System.Drawing.Size(246, 22);
+            this.mnExit.Text = "E&xit";
             this.mnExit.Click += new System.EventHandler(this.mnExit_Click);
             // 
             // txtENText
@@ -177,40 +168,40 @@
             this.chkSupra.Name = "chkSupra";
             this.chkSupra.Size = new System.Drawing.Size(120, 40);
             this.chkSupra.TabIndex = 4;
-            this.chkSupra.Text = "Exclude from Exports";
+            this.chkSupra.Text = "&Exclude from Exports";
             this.chkSupra.CheckStateChanged += new System.EventHandler(this.chkSupra_CheckStateChanged);
             // 
             // btnNext
             // 
             this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNext.Enabled = false;
-            this.btnNext.Location = new System.Drawing.Point(440, 312);
+            this.btnNext.Location = new System.Drawing.Point(437, 302);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(75, 23);
             this.btnNext.TabIndex = 5;
-            this.btnNext.Text = "Next ->";
+            this.btnNext.Text = "&Next ->";
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // btnPrev
             // 
             this.btnPrev.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPrev.Enabled = false;
-            this.btnPrev.Location = new System.Drawing.Point(360, 312);
+            this.btnPrev.Location = new System.Drawing.Point(360, 302);
             this.btnPrev.Name = "btnPrev";
             this.btnPrev.Size = new System.Drawing.Size(75, 23);
             this.btnPrev.TabIndex = 6;
-            this.btnPrev.Text = "<- Previous";
+            this.btnPrev.Text = "<- Pre&vious";
             this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
             // 
             // btnBreak
             // 
             this.btnBreak.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnBreak.Enabled = false;
-            this.btnBreak.Location = new System.Drawing.Point(216, 312);
+            this.btnBreak.Location = new System.Drawing.Point(209, 302);
             this.btnBreak.Name = "btnBreak";
             this.btnBreak.Size = new System.Drawing.Size(75, 23);
             this.btnBreak.TabIndex = 7;
-            this.btnBreak.Text = "Break Up";
+            this.btnBreak.Text = "Break &Up";
             this.btnBreak.Click += new System.EventHandler(this.btnBreak_Click);
             // 
             // gbxType
@@ -245,7 +236,7 @@
             this.rbPeriodical.Name = "rbPeriodical";
             this.rbPeriodical.Size = new System.Drawing.Size(96, 16);
             this.rbPeriodical.TabIndex = 4;
-            this.rbPeriodical.Text = "Periodical";
+            this.rbPeriodical.Text = "&Periodical";
             // 
             // rbLegislative
             // 
@@ -253,7 +244,7 @@
             this.rbLegislative.Name = "rbLegislative";
             this.rbLegislative.Size = new System.Drawing.Size(96, 16);
             this.rbLegislative.TabIndex = 3;
-            this.rbLegislative.Text = "Legislative";
+            this.rbLegislative.Text = "&Legislative";
             // 
             // rbCase
             // 
@@ -261,7 +252,7 @@
             this.rbCase.Name = "rbCase";
             this.rbCase.Size = new System.Drawing.Size(96, 16);
             this.rbCase.TabIndex = 2;
-            this.rbCase.Text = "Case";
+            this.rbCase.Text = "&Case";
             // 
             // rbBooks
             // 
@@ -269,7 +260,7 @@
             this.rbBooks.Name = "rbBooks";
             this.rbBooks.Size = new System.Drawing.Size(96, 16);
             this.rbBooks.TabIndex = 1;
-            this.rbBooks.Text = "Book";
+            this.rbBooks.Text = "&Book";
             // 
             // rbJournal
             // 
@@ -277,7 +268,17 @@
             this.rbJournal.Name = "rbJournal";
             this.rbJournal.Size = new System.Drawing.Size(96, 16);
             this.rbJournal.TabIndex = 0;
-            this.rbJournal.Text = "Journal";
+            this.rbJournal.Text = "&Journal";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(243, 6);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(243, 6);
             // 
             // ProcessingForm
             // 
@@ -299,7 +300,6 @@
             this.Text = "Processing Endnotes";
             this.Closing += new System.ComponentModel.CancelEventHandler(this.ProcessingForm_Closing);
             this.Load += new System.EventHandler(this.ProcessingForm_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ProcessingForm_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.gbxType.ResumeLayout(false);
@@ -331,7 +331,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnSaveProg;
         private System.Windows.Forms.ToolStripMenuItem mnExit;
         private System.Windows.Forms.ToolStripMenuItem mnClose;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
     }
 }

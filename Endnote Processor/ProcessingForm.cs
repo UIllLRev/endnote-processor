@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
@@ -7,6 +8,8 @@ using System.Linq;
 using System.Xml.Linq;
 
 using DocumentFormat.OpenXml.Packaging;
+using System.Xml.Serialization;
+using System.Xml;
 
 namespace FirstVistaTest
 {
@@ -14,9 +17,9 @@ namespace FirstVistaTest
     {
         private WordprocessingDocument oWordDoc;
 
-        public ArrayList sEndNoteArray;
+        public List<string> sEndNoteArray;
 
-        public ArrayList sEndNoteInfo;
+        public List<NoteInfo> sEndNoteInfo;
 
         public string sDelimiter;
 
@@ -135,7 +138,7 @@ namespace FirstVistaTest
                 {
                     OpenFileDialog openFileDialog = new OpenFileDialog();
                     openFileDialog.Multiselect = false;
-                    openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                    //openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                     openFileDialog.Filter = "Word Documents (*.doc; *.docx)|*.doc;*.docx";
                     openFileDialog.Title = "Open a Word document to process...";
                     openFileDialog.CheckFileExists = true;
@@ -149,8 +152,8 @@ namespace FirstVistaTest
                             frmProgress.Show();
                             frmProgress.SetMinVal(0);
                             frmProgress.SetMaxVal(xmlDoc.Elements().Count());
-                            this.sEndNoteArray = new ArrayList();
-                            this.sEndNoteInfo = new ArrayList();
+                            this.sEndNoteArray = new List<string>();
+                            this.sEndNoteInfo = new List<NoteInfo>();
                             int i = 0;
                             NoteInfo noteInfo = new NoteInfo();
                             foreach (XElement q in xmlDoc.Elements())
@@ -272,8 +275,8 @@ namespace FirstVistaTest
         {
             try
             {
-                sEndNoteArray = new ArrayList();
-                sEndNoteInfo = new ArrayList();
+                sEndNoteArray = new List<string>();
+                sEndNoteInfo = new List<NoteInfo>();
                 mnClose.Enabled = false;
                 mnOpen.Enabled = true;
                 mnExport.Enabled = false;
@@ -717,8 +720,8 @@ namespace FirstVistaTest
             this.lstNotes.BeginUpdate();
             this.lstNotes.Items.Clear();
             this.lstNotes.EndUpdate();
-            this.sEndNoteArray = new ArrayList();
-            this.sEndNoteInfo = new ArrayList();
+            this.sEndNoteArray = new List<string>();
+            this.sEndNoteInfo = new List<NoteInfo>();
             this.txtENText.Enabled = false;
             this.txtENText.Text = "";
             this.btnBreak.Enabled = false;
@@ -844,28 +847,14 @@ namespace FirstVistaTest
                 {
                     try
                     {
-                        StreamWriter streamWriter = new StreamWriter(saveFileDialog.FileName, false);
-                        int num = this.sEndNoteArray.Count - 1;
-                        for (int i = 0; i <= num; i++)
-                        {
-                            streamWriter.Write(sEndNoteArray[i]);
-                            if (i < this.sEndNoteArray.Count - 1)
-                            {
-                                streamWriter.Write(this.sDelimiter2);
-                            }
-                        }
-                        streamWriter.Write(this.sDelimiter3);
-                        int num2 = this.sEndNoteInfo.Count - 1;
-                        for (int i = 0; i <= num2; i++)
-                        {
-                            NoteInfo noteInfo = (NoteInfo)sEndNoteInfo[i];
-                            streamWriter.Write(noteInfo.Type.ToString() + sDelimiter4 + noteInfo.SupraOrId.ToString());
-                            if (i < this.sEndNoteInfo.Count - 1)
-                            {
-                                streamWriter.Write(this.sDelimiter2);
-                            }
-                        }
-                        streamWriter.Close();
+                        XmlWriter xmlWriter = XmlTextWriter.Create(saveFileDialog.FileName, new XmlWriterSettings() {  });
+                        xmlWriter.WriteStartElement("EndnoteProcessorState");
+                        XmlSerializer endnoteSerializer = new XmlSerializer(typeof(List<string>));
+                        endnoteSerializer.Serialize(xmlWriter, sEndNoteArray);
+                        XmlSerializer infoSerializer = new XmlSerializer(typeof(List<NoteInfo>));
+                        infoSerializer.Serialize(xmlWriter, sEndNoteInfo);
+                        xmlWriter.WriteEndElement();
+                        xmlWriter.Close();
                         this.bSavedProgress = true;
                     }
                     catch (Exception)
@@ -941,35 +930,25 @@ namespace FirstVistaTest
             openFileDialog.Title = "Open a work in progress...";
             openFileDialog.Filter = "Partial Endnote Edit (*.pen)|*.pen";
             openFileDialog.CheckFileExists = true;
-            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            //openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             openFileDialog.CheckPathExists = true;
             checked
             {
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {/*
+                {
                     try
                     {
-                        StreamReader streamReader = new StreamReader(openFileDialog.FileName);
-                        string text = streamReader.ReadLine();
-                        string[] array = text.Split(this.sDelimiter3);
-                        string[] array2 = array[0].Split(this.sDelimiter);
-                        string[] array3 = array[1].Split(this.sDelimiter2);
-                        this.sEndNoteArray = new ArrayList();
-                        this.sEndNoteInfo = new ArrayList();
-                        int num = array2.Length - 1;
-                        NoteInfo noteInfo;
-                        for (int i = 0; i <= num; i++)
-                        {
-                            this.sEndNoteArray.Add(array2[i]);
-                            noteInfo = new NoteInfo();
-                            string[] array4 = array3[i].Split(this.sDelimiter4);
-                            noteInfo.Type = int.Parse(array4[0]);
-                            noteInfo.SupraOrId = bool.Parse(array4[1]);
-                            this.sEndNoteInfo.Add(noteInfo);
-                        }
+                        XmlReader xmlReader = XmlReader.Create(openFileDialog.FileName);
+                        xmlReader.ReadStartElement();
+                        XmlSerializer endnoteSerializer = new XmlSerializer(typeof(List<string>));
+                        sEndNoteArray = (List<string>)endnoteSerializer.Deserialize(xmlReader);
+                        XmlSerializer infoSerializer = new XmlSerializer(typeof(List<NoteInfo>));
+                        sEndNoteInfo = (List<NoteInfo>)infoSerializer.Deserialize(xmlReader);
+                        xmlReader.Close();
+
                         this.updateListBox();
                         this.txtENText.Text = (string)this.sEndNoteArray[lstNotes.SelectedIndex];
-                        noteInfo = (NoteInfo)this.sEndNoteInfo[lstNotes.SelectedIndex];
+                        NoteInfo noteInfo = (NoteInfo)this.sEndNoteInfo[lstNotes.SelectedIndex];
                         this.chkSupra.Checked = noteInfo.SupraOrId;
                         this.oldSelectedIndex = this.lstNotes.SelectedIndex;
                         switch (noteInfo.Type)
@@ -1015,7 +994,7 @@ namespace FirstVistaTest
                     {
                         MessageBox.Show("There was an error opening the file, it may be corrupt.", "Processing Endnotes...", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                */}
+                }
             }
         }
 
@@ -1038,101 +1017,6 @@ namespace FirstVistaTest
                 this.rbPeriodical.Enabled = false;
                 this.rbLegislative.Enabled = false;
                 this.rbMiscellaneous.Enabled = false;
-            }
-        }
-
-        private void ProcessingForm_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Modifiers == Keys.Control)
-            {
-                if (e.KeyCode == Keys.E)
-                {
-                    this.chkSupra.Checked = !this.chkSupra.Checked;
-                    e.Handled = true;
-                }
-                else if (e.KeyCode == Keys.Down)
-                {
-                    this.btnNext_Click(sender, e);
-                    this.txtENText.Focus();
-                    e.Handled = true;
-                }
-                else if (e.KeyCode == Keys.Up)
-                {
-                    this.btnPrev_Click(sender, e);
-                    this.txtENText.Focus();
-                    e.Handled = true;
-                }
-                else if (e.KeyCode == Keys.U)
-                {
-                    this.btnBreak_Click(sender, e);
-                    e.Handled = true;
-                }
-                else if (!this.chkSupra.Checked)
-                {
-                    if (e.KeyCode == Keys.B)
-                    {
-                        this.rbBooks.Checked = true;
-                        e.Handled = true;
-                    }
-                    else if (e.KeyCode == Keys.J)
-                    {
-                        this.rbJournal.Checked = true;
-                        e.Handled = true;
-                    }
-                    else if (e.KeyCode == Keys.C)
-                    {
-                        this.rbCase.Checked = true;
-                        e.Handled = true;
-                    }
-                    else if (e.KeyCode == Keys.M)
-                    {
-                        this.rbMiscellaneous.Checked = true;
-                        e.Handled = true;
-                    }
-                    else if (e.KeyCode == Keys.P)
-                    {
-                        this.rbPeriodical.Checked = true;
-                        e.Handled = true;
-                    }
-                    else if (e.KeyCode == Keys.L)
-                    {
-                        this.rbLegislative.Checked = true;
-                        e.Handled = true;
-                    }
-                }
-            }
-            if (e.Modifiers == Keys.Alt)
-            {
-                if (e.KeyCode == Keys.O)
-                {
-                    this.mnOpen_Click(sender, e);
-                    e.Handled = true;
-                }
-                else if (e.KeyCode == Keys.E)
-                {
-                    this.mnExport_Click(sender, e);
-                    e.Handled = true;
-                }
-                else if (e.KeyCode == Keys.P)
-                {
-                    this.mnOpenPart_Click(sender, e);
-                    e.Handled = true;
-                }
-                else if (e.KeyCode == Keys.S)
-                {
-                    this.mnSaveProg_Click(sender, e);
-                    e.Handled = true;
-                }
-                else if (e.KeyCode == Keys.F2 || e.KeyCode == Keys.X)
-                {
-                    this.mnExit_Click(sender, e);
-                    e.Handled = true;
-                }
-                else if (e.KeyCode == Keys.C)
-                {
-                    this.mnClose_Click(sender, e);
-                    e.Handled = true;
-                }
             }
         }
 

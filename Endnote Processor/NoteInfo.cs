@@ -2,6 +2,7 @@ using System;
 
 namespace FirstVistaTest
 {
+    [Serializable]
 	public class NoteInfo
 	{
 		public bool SupraOrId;
