@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBreakUp));
             this.pnlHowMany = new System.Windows.Forms.Panel();
             this.cbxHowMany = new System.Windows.Forms.ComboBox();
             this.lblHowMany = new System.Windows.Forms.Label();
@@ -147,6 +148,7 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.pnlSplit);
             this.Controls.Add(this.pnlHowMany);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(296, 270);
