@@ -225,15 +225,15 @@
             // 
             // rbMiscellaneous
             // 
-            this.rbMiscellaneous.Location = new System.Drawing.Point(8, 160);
+            this.rbMiscellaneous.Location = new System.Drawing.Point(8, 136);
             this.rbMiscellaneous.Name = "rbMiscellaneous";
             this.rbMiscellaneous.Size = new System.Drawing.Size(96, 16);
             this.rbMiscellaneous.TabIndex = 5;
-            this.rbMiscellaneous.Text = "Miscellaneous";
+            this.rbMiscellaneous.Text = "&Miscellaneous";
             // 
             // rbPeriodical
             // 
-            this.rbPeriodical.Location = new System.Drawing.Point(8, 136);
+            this.rbPeriodical.Location = new System.Drawing.Point(8, 112);
             this.rbPeriodical.Name = "rbPeriodical";
             this.rbPeriodical.Size = new System.Drawing.Size(96, 16);
             this.rbPeriodical.TabIndex = 4;
@@ -241,7 +241,7 @@
             // 
             // rbLegislative
             // 
-            this.rbLegislative.Location = new System.Drawing.Point(8, 112);
+            this.rbLegislative.Location = new System.Drawing.Point(8, 88);
             this.rbLegislative.Name = "rbLegislative";
             this.rbLegislative.Size = new System.Drawing.Size(96, 16);
             this.rbLegislative.TabIndex = 3;
@@ -249,7 +249,7 @@
             // 
             // rbCase
             // 
-            this.rbCase.Location = new System.Drawing.Point(8, 88);
+            this.rbCase.Location = new System.Drawing.Point(8, 64);
             this.rbCase.Name = "rbCase";
             this.rbCase.Size = new System.Drawing.Size(96, 16);
             this.rbCase.TabIndex = 2;
@@ -257,7 +257,7 @@
             // 
             // rbBooks
             // 
-            this.rbBooks.Location = new System.Drawing.Point(8, 64);
+            this.rbBooks.Location = new System.Drawing.Point(8, 40);
             this.rbBooks.Name = "rbBooks";
             this.rbBooks.Size = new System.Drawing.Size(96, 16);
             this.rbBooks.TabIndex = 1;
@@ -265,7 +265,7 @@
             // 
             // rbJournal
             // 
-            this.rbJournal.Location = new System.Drawing.Point(8, 40);
+            this.rbJournal.Location = new System.Drawing.Point(8, 16);
             this.rbJournal.Name = "rbJournal";
             this.rbJournal.Size = new System.Drawing.Size(96, 16);
             this.rbJournal.TabIndex = 0;
