@@ -95,7 +95,7 @@
             this.mnExport.Enabled = false;
             this.mnExport.Name = "mnExport";
             this.mnExport.Size = new System.Drawing.Size(246, 22);
-            this.mnExport.Text = "&Export CSVs...";
+            this.mnExport.Text = "&Export...";
             this.mnExport.Click += new System.EventHandler(this.mnExport_Click);
             // 
             // mnClose

@@ -104,7 +104,7 @@ namespace EndnoteProcessor
                 DialogResult msgBoxResult = MessageBox.Show("You have not yet exported the endnotes, would you like to before exiting?", "Processing Endnotes...", MessageBoxButtons.YesNoCancel);
                 if (msgBoxResult == DialogResult.Yes)
                 {
-                    this.ExportCSV();
+                    Export();
                 }
                 else
                 {
@@ -512,10 +512,10 @@ namespace EndnoteProcessor
                 }
                 this.sEndNoteInfo[oldSelectedIndex] = noteInfo;
             }
-            ExportCSV();
+            Export();
         }
 
-        private void ExportCSV()
+        private void Export()
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.RestoreDirectory = true;
@@ -696,7 +696,7 @@ namespace EndnoteProcessor
                 DialogResult msgBoxResult = MessageBox.Show("You have not yet exported the endnotes, would you like to before closing?", "Processing Endnotes...", MessageBoxButtons.YesNoCancel);
                 if (msgBoxResult == DialogResult.Yes)
                 {
-                    this.ExportCSV();
+                    Export();
                 }
                 else
                 {
@@ -783,7 +783,7 @@ namespace EndnoteProcessor
                     DialogResult msgBoxResult = MessageBox.Show("You have not yet exported the endnotes, would you like to before closing?", "Processing Endnotes...", MessageBoxButtons.YesNo);
                     if (msgBoxResult == DialogResult.Yes)
                     {
-                        this.ExportCSV();
+                        Export();
                     }
                     else
                     {
@@ -904,7 +904,7 @@ namespace EndnoteProcessor
                 DialogResult msgBoxResult = MessageBox.Show("You have not yet exported the endnotes, would you like to before exiting?", "Processing Endnotes...", MessageBoxButtons.YesNoCancel);
                 if (msgBoxResult == DialogResult.Yes)
                 {
-                    this.ExportCSV();
+                    Export();
                 }
                 else
                 {
