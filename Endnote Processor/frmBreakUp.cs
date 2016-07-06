@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Resources;
 using System.Windows.Forms;
 
-namespace FirstVistaTest
+namespace EndnoteProcessor
 {
     public partial class frmBreakUp : Form
     {

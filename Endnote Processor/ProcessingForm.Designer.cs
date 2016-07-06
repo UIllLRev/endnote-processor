@@ -1,4 +1,4 @@
-﻿namespace FirstVistaTest
+﻿namespace EndnoteProcessor
 {
     partial class ProcessingForm
     {

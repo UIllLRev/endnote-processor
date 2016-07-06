@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
-namespace FirstVistaTest
+namespace EndnoteProcessor
 {
     partial class frmProgress
     {

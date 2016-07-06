@@ -1,6 +1,6 @@
 using System;
 
-namespace FirstVistaTest
+namespace EndnoteProcessor
 {
     [Serializable]
 	public class NoteInfo

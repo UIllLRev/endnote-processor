@@ -3,15 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Windows.Forms;
 using System.Linq;
+using System.Windows.Forms;
+using System.Xml;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 
 using DocumentFormat.OpenXml.Packaging;
-using System.Xml.Serialization;
-using System.Xml;
 
-namespace FirstVistaTest
+
+namespace EndnoteProcessor
 {
     public partial class ProcessingForm : Form
     {

@@ -28,7 +28,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace FirstVistaTest
+namespace EndnoteProcessor
 {
     public static class PtUtils
     {

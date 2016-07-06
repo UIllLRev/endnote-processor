@@ -38,7 +38,7 @@ using System.Collections.Generic;
 using DocumentFormat.OpenXml.Packaging;
 using System.Drawing;
 
-namespace FirstVistaTest
+namespace EndnoteProcessor
 {
     public static class PtOpenXmlExtensions
     {
