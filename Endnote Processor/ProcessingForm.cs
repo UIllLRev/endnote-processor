@@ -49,38 +49,43 @@ namespace EndnoteProcessor
             InitializeComponent();
         }
 
+        private void SaveEndnote()
+        {
+            sEndNoteArray[oldSelectedIndex]  = txtENText.Text;
+            NoteInfo noteInfo = (NoteInfo)sEndNoteInfo[oldSelectedIndex];
+            noteInfo.SupraOrId = chkSupra.Checked;
+            if (rbJournal.Checked)
+            {
+                noteInfo.Type = 0;
+            }
+            if (rbBooks.Checked)
+            {
+                noteInfo.Type = 1;
+            }
+            if (rbCase.Checked)
+            {
+                noteInfo.Type = 2;
+            }
+            if (rbLegislative.Checked)
+            {
+                noteInfo.Type = 3;
+            }
+            if (rbPeriodical.Checked)
+            {
+                noteInfo.Type = 4;
+            }
+            if (rbMiscellaneous.Checked)
+            {
+                noteInfo.Type = 5;
+            }
+            sEndNoteInfo[oldSelectedIndex] = noteInfo;
+        }
+
         private void mnExit_Click(object sender, EventArgs e)
         {
             if (oldSelectedIndex >= 0 && sEndNoteArray != null && oldSelectedIndex < sEndNoteArray.Count)
             {
-                sEndNoteArray[oldSelectedIndex]  = txtENText.Text;
-                NoteInfo noteInfo = (NoteInfo)sEndNoteInfo[oldSelectedIndex];
-                noteInfo.SupraOrId = chkSupra.Checked;
-                if (rbJournal.Checked)
-                {
-                    noteInfo.Type = 0;
-                }
-                if (rbBooks.Checked)
-                {
-                    noteInfo.Type = 1;
-                }
-                if (rbCase.Checked)
-                {
-                    noteInfo.Type = 2;
-                }
-                if (rbLegislative.Checked)
-                {
-                    noteInfo.Type = 3;
-                }
-                if (rbPeriodical.Checked)
-                {
-                    noteInfo.Type = 4;
-                }
-                if (rbMiscellaneous.Checked)
-                {
-                    noteInfo.Type = 5;
-                }
-                sEndNoteInfo[oldSelectedIndex] = noteInfo;
+                SaveEndnote();
             }
             if (!bSaved & !bSavedProgress)
             {
@@ -311,34 +316,7 @@ namespace EndnoteProcessor
                 NoteInfo noteInfo;
                 if (oldSelectedIndex >= 0)
                 {
-                    sEndNoteArray[oldSelectedIndex] = txtENText.Text;
-                    noteInfo = (NoteInfo)sEndNoteInfo[oldSelectedIndex];
-                    noteInfo.SupraOrId = chkSupra.Checked;
-                    if (rbJournal.Checked)
-                    {
-                        noteInfo.Type = 0;
-                    }
-                    if (rbBooks.Checked)
-                    {
-                        noteInfo.Type = 1;
-                    }
-                    if (rbCase.Checked)
-                    {
-                        noteInfo.Type = 2;
-                    }
-                    if (rbLegislative.Checked)
-                    {
-                        noteInfo.Type = 3;
-                    }
-                    if (rbPeriodical.Checked)
-                    {
-                        noteInfo.Type = 4;
-                    }
-                    if (rbMiscellaneous.Checked)
-                    {
-                        noteInfo.Type = 5;
-                    }
-                    sEndNoteInfo[oldSelectedIndex] = noteInfo;
+                    SaveEndnote();
                 }
                 txtENText.Text = (string)sEndNoteArray[lstNotes.SelectedIndex];
                 noteInfo = (NoteInfo)sEndNoteInfo[lstNotes.SelectedIndex];
@@ -399,34 +377,7 @@ namespace EndnoteProcessor
             NoteInfo noteInfo;
             if (oldSelectedIndex >= 0)
             {
-                sEndNoteArray[oldSelectedIndex] = txtENText.Text;
-                noteInfo = (NoteInfo)sEndNoteInfo[oldSelectedIndex];
-                noteInfo.SupraOrId = chkSupra.Checked;
-                if (rbJournal.Checked)
-                {
-                    noteInfo.Type = 0;
-                }
-                if (rbBooks.Checked)
-                {
-                    noteInfo.Type = 1;
-                }
-                if (rbCase.Checked)
-                {
-                    noteInfo.Type = 2;
-                }
-                if (rbLegislative.Checked)
-                {
-                    noteInfo.Type = 3;
-                }
-                if (rbPeriodical.Checked)
-                {
-                    noteInfo.Type = 4;
-                }
-                if (rbMiscellaneous.Checked)
-                {
-                    noteInfo.Type = 5;
-                }
-                sEndNoteInfo[oldSelectedIndex] = noteInfo;
+                SaveEndnote();
             }
             new frmBreakUp
             {
@@ -465,35 +416,9 @@ namespace EndnoteProcessor
         {
             if (oldSelectedIndex >= 0 && sEndNoteArray != null && oldSelectedIndex < sEndNoteArray.Count)
             {
-                sEndNoteArray[oldSelectedIndex] = txtENText.Text;
-                NoteInfo noteInfo = (NoteInfo)sEndNoteInfo[oldSelectedIndex];
-                noteInfo.SupraOrId = chkSupra.Checked;
-                if (rbJournal.Checked)
-                {
-                    noteInfo.Type = 0;
-                }
-                if (rbBooks.Checked)
-                {
-                    noteInfo.Type = 1;
-                }
-                if (rbCase.Checked)
-                {
-                    noteInfo.Type = 2;
-                }
-                if (rbLegislative.Checked)
-                {
-                    noteInfo.Type = 3;
-                }
-                if (rbPeriodical.Checked)
-                {
-                    noteInfo.Type = 4;
-                }
-                if (rbMiscellaneous.Checked)
-                {
-                    noteInfo.Type = 5;
-                }
-                sEndNoteInfo[oldSelectedIndex] = noteInfo;
+                SaveEndnote();
             }
+
             Export();
         }
 
@@ -567,35 +492,9 @@ namespace EndnoteProcessor
         {
             if (oldSelectedIndex >= 0)
             {
-                sEndNoteArray[oldSelectedIndex] = txtENText.Text;
-                NoteInfo noteInfo = (NoteInfo)sEndNoteInfo[oldSelectedIndex];
-                noteInfo.SupraOrId = chkSupra.Checked;
-                if (rbJournal.Checked)
-                {
-                    noteInfo.Type = 0;
-                }
-                if (rbBooks.Checked)
-                {
-                    noteInfo.Type = 1;
-                }
-                if (rbCase.Checked)
-                {
-                    noteInfo.Type = 2;
-                }
-                if (rbLegislative.Checked)
-                {
-                    noteInfo.Type = 3;
-                }
-                if (rbPeriodical.Checked)
-                {
-                    noteInfo.Type = 4;
-                }
-                if (rbMiscellaneous.Checked)
-                {
-                    noteInfo.Type = 5;
-                }
-                sEndNoteInfo[oldSelectedIndex] = noteInfo;
+                SaveEndnote();
             }
+
             if (!bSaved & !bSavedProgress)
             {
                 DialogResult msgBoxResult = MessageBox.Show("You have not yet exported the endnotes, would you like to before closing?", "Processing Endnotes...", MessageBoxButtons.YesNoCancel);
@@ -654,35 +553,9 @@ namespace EndnoteProcessor
             {
                 if (oldSelectedIndex >= 0 && sEndNoteArray != null && oldSelectedIndex < sEndNoteArray.Count)
                 {
-                    sEndNoteArray[oldSelectedIndex] = txtENText.Text;
-                    NoteInfo noteInfo = (NoteInfo)sEndNoteInfo[oldSelectedIndex];
-                    noteInfo.SupraOrId = chkSupra.Checked;
-                    if (rbJournal.Checked)
-                    {
-                        noteInfo.Type = 0;
-                    }
-                    if (rbBooks.Checked)
-                    {
-                        noteInfo.Type = 1;
-                    }
-                    if (rbCase.Checked)
-                    {
-                        noteInfo.Type = 2;
-                    }
-                    if (rbLegislative.Checked)
-                    {
-                        noteInfo.Type = 3;
-                    }
-                    if (rbPeriodical.Checked)
-                    {
-                        noteInfo.Type = 4;
-                    }
-                    if (rbMiscellaneous.Checked)
-                    {
-                        noteInfo.Type = 5;
-                    }
-                    sEndNoteInfo[oldSelectedIndex] = noteInfo;
+                    SaveEndnote();
                 }
+
                 if (!bSaved & !bSavedProgress)
                 {
                     DialogResult msgBoxResult = MessageBox.Show("You have not yet exported the endnotes, would you like to before closing?", "Processing Endnotes...", MessageBoxButtons.YesNo);
@@ -711,35 +584,9 @@ namespace EndnoteProcessor
         {
             if (oldSelectedIndex >= 0)
             {
-                sEndNoteArray[oldSelectedIndex] =  txtENText.Text;
-                NoteInfo noteInfo = (NoteInfo)sEndNoteInfo[oldSelectedIndex];
-                noteInfo.SupraOrId = chkSupra.Checked;
-                if (rbJournal.Checked)
-                {
-                    noteInfo.Type = 0;
-                }
-                if (rbBooks.Checked)
-                {
-                    noteInfo.Type = 1;
-                }
-                if (rbCase.Checked)
-                {
-                    noteInfo.Type = 2;
-                }
-                if (rbLegislative.Checked)
-                {
-                    noteInfo.Type = 3;
-                }
-                if (rbPeriodical.Checked)
-                {
-                    noteInfo.Type = 4;
-                }
-                if (rbMiscellaneous.Checked)
-                {
-                    noteInfo.Type = 5;
-                }
-                sEndNoteInfo[oldSelectedIndex] =  noteInfo;
+                SaveEndnote();
             }
+
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.RestoreDirectory = true;
             saveFileDialog.Title = "Save the current progress...";
@@ -777,35 +624,9 @@ namespace EndnoteProcessor
         {
             if (oldSelectedIndex >= 0 && sEndNoteArray != null && oldSelectedIndex < sEndNoteArray.Count)
             {
-                sEndNoteArray[oldSelectedIndex] = txtENText.Text;
-                NoteInfo noteInfo = (NoteInfo)sEndNoteInfo[oldSelectedIndex];
-                noteInfo.SupraOrId = chkSupra.Checked;
-                if (rbJournal.Checked)
-                {
-                    noteInfo.Type = 0;
-                }
-                if (rbBooks.Checked)
-                {
-                    noteInfo.Type = 1;
-                }
-                if (rbCase.Checked)
-                {
-                    noteInfo.Type = 2;
-                }
-                if (rbLegislative.Checked)
-                {
-                    noteInfo.Type = 3;
-                }
-                if (rbPeriodical.Checked)
-                {
-                    noteInfo.Type = 4;
-                }
-                if (rbMiscellaneous.Checked)
-                {
-                    noteInfo.Type = 5;
-                }
-                sEndNoteInfo[oldSelectedIndex] = noteInfo;
+                SaveEndnote();
             }
+
             if (!bSaved & !bSavedProgress)
             {
                 DialogResult msgBoxResult = MessageBox.Show("You have not yet exported the endnotes, would you like to before exiting?", "Processing Endnotes...", MessageBoxButtons.YesNoCancel);
