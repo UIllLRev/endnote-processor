@@ -23,18 +23,6 @@ namespace EndnoteProcessor
 
         public List<NoteInfo> sEndNoteInfo;
 
-        public string sDelimiter;
-
-        public string sDelimiter2;
-
-        public string sDelimiter3;
-
-        public string sDelimiter4;
-
-        public string sDelimiter5;
-
-        public string sDelimiter6;
-
         public bool bSaved;
 
         public bool bExitGenerated;
@@ -53,12 +41,6 @@ namespace EndnoteProcessor
 
         public ProcessingForm()
         {
-            sDelimiter = "|*#*|";
-            sDelimiter2 = "|*&*|";
-            sDelimiter3 = "|*$*|";
-            sDelimiter4 = "|*@*|";
-            sDelimiter5 = "|*%*|";
-            sDelimiter6 = "|*!*|";
             bSaved = true;
             bExitGenerated = false;
             bSavedProgress = true;
