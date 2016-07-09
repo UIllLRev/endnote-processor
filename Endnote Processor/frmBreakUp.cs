@@ -11,8 +11,6 @@ namespace EndnoteProcessor
     {
         private int iPanelCnt;
 
-        private bool bCancel;
-
         public ProcessingForm parentfrm;
 
         public int iIndex;
@@ -25,104 +23,103 @@ namespace EndnoteProcessor
 
         public frmBreakUp()
         {
-            this.iPanelCnt = 0;
-            this.bCancel = true;
-            this.iDivCnt = 1;
-            this.iCnt = 0;
-            this.bNextClick = false;
-            this.InitializeComponent();
+            iPanelCnt = 0;
+            iDivCnt = 1;
+            iCnt = 0;
+            bNextClick = false;
+            InitializeComponent();
         }
 
         private void frmBreakUp_Load(object sender, EventArgs e)
         {
-            this.cbxHowMany.SelectedIndex = 0;
-            this.pnlSplit.Visible = false;
-            this.pnlSplit.SendToBack();
-            this.pnlHowMany.Visible = true;
-            this.pnlHowMany.BringToFront();
-            this.btnOK.Text = "Next";
-            this.txtSplit.Text = (string)this.parentfrm.sEndNoteArray[iIndex];
+            cbxHowMany.SelectedIndex = 0;
+            pnlSplit.Visible = false;
+            pnlSplit.SendToBack();
+            pnlHowMany.Visible = true;
+            pnlHowMany.BringToFront();
+            btnOK.Text = "Next";
+            txtSplit.Text = (string)parentfrm.sEndNoteArray[iIndex];
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            this.bNextClick = true;
+            bNextClick = true;
             checked
             {
-                if (this.iPanelCnt == 0)
+                if (iPanelCnt == 0)
                 {
-                    this.iDivCnt = int.Parse((string)this.cbxHowMany.SelectedItem);
-                    this.pnlHowMany.Visible = false;
-                    this.pnlHowMany.SendToBack();
-                    this.pnlSplit.Visible = true;
-                    this.pnlSplit.BringToFront();
-                    this.iPanelCnt++;
-                    if (this.iDivCnt == 2)
+                    iDivCnt = int.Parse((string)cbxHowMany.SelectedItem);
+                    pnlHowMany.Visible = false;
+                    pnlHowMany.SendToBack();
+                    pnlSplit.Visible = true;
+                    pnlSplit.BringToFront();
+                    iPanelCnt++;
+                    if (iDivCnt == 2)
                     {
-                        this.btnOK.Text = "OK";
+                        btnOK.Text = "OK";
                     }
-                    this.Text = "Break " + this.iPanelCnt.ToString() + " of " + this.iDivCnt.ToString();
+                    Text = "Break " + iPanelCnt.ToString() + " of " + iDivCnt.ToString();
                 }
-                else if (this.iPanelCnt > 0)
+                else if (iPanelCnt > 0)
                 {
-                    switch (this.iPanelCnt)
+                    switch (iPanelCnt)
                     {
                     case 1:
-                        this.lblSplit.Text = "Click where you would like the second endnote to end.  The system will highlight from the beginning to the point of your click.";
+                        lblSplit.Text = "Click where you would like the second endnote to end.  The system will highlight from the beginning to the point of your click.";
                         break;
                     case 2:
-                        this.lblSplit.Text = "Click where you would like the third endnote to end.  The system will highlight from the beginning to the point of your click.";
+                        lblSplit.Text = "Click where you would like the third endnote to end.  The system will highlight from the beginning to the point of your click.";
                         break;
                     case 3:
-                        this.lblSplit.Text = "Click where you would like the fourth endnote to end.  The system will highlight from the beginning to the point of your click.";
+                        lblSplit.Text = "Click where you would like the fourth endnote to end.  The system will highlight from the beginning to the point of your click.";
                         break;
                     case 4:
-                        this.lblSplit.Text = "Click where you would like the fifth endnote to end.  The system will highlight from the beginning to the point of your click.";
+                        lblSplit.Text = "Click where you would like the fifth endnote to end.  The system will highlight from the beginning to the point of your click.";
                         break;
                     case 5:
-                        this.lblSplit.Text = "Click where you would like the sixth endnote to end.  The system will highlight from the beginning to the point of your click.";
+                        lblSplit.Text = "Click where you would like the sixth endnote to end.  The system will highlight from the beginning to the point of your click.";
                         break;
                     case 6:
-                        this.lblSplit.Text = "Click where you would like the seventh endnote to end.  The system will highlight from the beginning to the point of your click.";
+                        lblSplit.Text = "Click where you would like the seventh endnote to end.  The system will highlight from the beginning to the point of your click.";
                         break;
                     case 7:
-                        this.lblSplit.Text = "Click where you would like the eighth endnote to end.  The system will highlight from the beginning to the point of your click.";
+                        lblSplit.Text = "Click where you would like the eighth endnote to end.  The system will highlight from the beginning to the point of your click.";
                         break;
                     case 8:
-                        this.lblSplit.Text = "Click where you would like the ninth endnote to end.  The system will highlight from the beginning to the point of your click.";
+                        lblSplit.Text = "Click where you would like the ninth endnote to end.  The system will highlight from the beginning to the point of your click.";
                         break;
                     }
-                    this.parentfrm.sEndNoteArray[iIndex] = txtSplit.Text.Substring(0, this.iCnt).Trim();
-                    this.parentfrm.sEndNoteArray.Insert(iIndex + 1, txtSplit.Text.Substring(this.iCnt).Trim());
+                    parentfrm.sEndNoteArray[iIndex] = txtSplit.Text.Substring(0, iCnt).Trim();
+                    parentfrm.sEndNoteArray.Insert(iIndex + 1, txtSplit.Text.Substring(iCnt).Trim());
                     NoteInfo noteInfo = (NoteInfo)parentfrm.sEndNoteInfo[iIndex];
                     parentfrm.sEndNoteInfo.Insert(iIndex + 1, noteInfo.copy());
                     txtSplit.Text = txtSplit.Text.Substring(iCnt).Trim();
                     iIndex++;
-                    if (this.iPanelCnt == this.iDivCnt - 2)
+                    if (iPanelCnt == iDivCnt - 2)
                     {
-                        this.btnOK.Text = "OK";
+                        btnOK.Text = "OK";
                     }
-                    else if (this.iPanelCnt == this.iDivCnt - 1)
+                    else if (iPanelCnt == iDivCnt - 1)
                     {
-                        this.bCancel = true;
-                        this.Close();
+                        
+                        Close();
                     }
-                    this.iPanelCnt++;
-                    this.Text = "Break " + iPanelCnt.ToString() + " of " + this.iDivCnt.ToString();
-                    this.btnCancel.Text = "Close";
+                    iPanelCnt++;
+                    Text = "Break " + iPanelCnt.ToString() + " of " + iDivCnt.ToString();
+                    btnCancel.Text = "Close";
                 }
-                this.bNextClick = false;
+                bNextClick = false;
             }
         }
 
         private void txtSplit_Click(object sender, EventArgs e)
         {
-            if (!this.bNextClick)
+            if (!bNextClick)
             {
                 iCnt = txtSplit.SelectionStart;
                 txtSplit.Select(0, txtSplit.SelectionStart);

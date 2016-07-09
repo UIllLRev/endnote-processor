@@ -81,25 +81,25 @@ namespace EndnoteProcessor
                 {
                     noteInfo.Type = 1;
                 }
-                if (this.rbCase.Checked)
+                if (rbCase.Checked)
                 {
                     noteInfo.Type = 2;
                 }
-                if (this.rbLegislative.Checked)
+                if (rbLegislative.Checked)
                 {
                     noteInfo.Type = 3;
                 }
-                if (this.rbPeriodical.Checked)
+                if (rbPeriodical.Checked)
                 {
                     noteInfo.Type = 4;
                 }
-                if (this.rbMiscellaneous.Checked)
+                if (rbMiscellaneous.Checked)
                 {
                     noteInfo.Type = 5;
                 }
-                this.sEndNoteInfo[oldSelectedIndex] = noteInfo;
+                sEndNoteInfo[oldSelectedIndex] = noteInfo;
             }
-            if (!this.bSaved & !this.bSavedProgress)
+            if (!bSaved & !bSavedProgress)
             {
                 DialogResult msgBoxResult = MessageBox.Show("You have not yet exported the endnotes, would you like to before exiting?", "Processing Endnotes...", MessageBoxButtons.YesNoCancel);
                 if (msgBoxResult == DialogResult.Yes)
@@ -117,7 +117,7 @@ namespace EndnoteProcessor
                         DialogResult msgBoxResult2 = MessageBox.Show("Would you like to save your progress so that it can be resumed later?", "Processing Endnotes...", MessageBoxButtons.YesNoCancel);
                         if (msgBoxResult2 == DialogResult.Yes)
                         {
-                            this.SaveProgress();
+                            SaveProgress();
                         }
                         else if (msgBoxResult2 == DialogResult.Cancel)
                         {
@@ -127,8 +127,8 @@ namespace EndnoteProcessor
                 }
             }
 
-            this.bExitGenerated = true;
-            this.Close();
+            bExitGenerated = true;
+            Close();
         }
 
         private void mnOpen_Click(object sender, EventArgs e)
@@ -153,8 +153,8 @@ namespace EndnoteProcessor
                             frmProgress.Show();
                             frmProgress.SetMinVal(0);
                             frmProgress.SetMaxVal(xmlDoc.Elements().Count());
-                            this.sEndNoteArray = new List<string>();
-                            this.sEndNoteInfo = new List<NoteInfo>();
+                            sEndNoteArray = new List<string>();
+                            sEndNoteInfo = new List<NoteInfo>();
                             int i = 0;
                             NoteInfo noteInfo = new NoteInfo();
                             foreach (XElement q in xmlDoc.Elements())
@@ -170,7 +170,7 @@ namespace EndnoteProcessor
                                         sEndNoteInfo.Add(new NoteInfo());
                                         if (text.IndexOf("id.", StringComparison.InvariantCultureIgnoreCase) >= 0 | text.IndexOf("supra", StringComparison.InvariantCultureIgnoreCase) >= 0 | text.IndexOf("need cite", StringComparison.InvariantCultureIgnoreCase) >= 0)
                                         {
-                                            noteInfo = (NoteInfo)this.sEndNoteInfo[sEndNoteInfo.Count - 1];
+                                            noteInfo = (NoteInfo)sEndNoteInfo[sEndNoteInfo.Count - 1];
                                             noteInfo.SupraOrId = true;
                                             sEndNoteInfo[sEndNoteInfo.Count - 1] =  noteInfo;
                                         }
@@ -250,7 +250,7 @@ namespace EndnoteProcessor
                         {
                             MessageBox.Show("There are no endnotes in this document.", "Processing Endnotes", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             oWordDoc.Close();
-                            this.oWordDoc = null;
+                            oWordDoc = null;
                         }
                     }
                 }
@@ -259,7 +259,7 @@ namespace EndnoteProcessor
                     MessageBox.Show("There was an error opening the file, please check the file and try again.", "Processing Endnotes", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     try
                     {
-                        if (this.oWordDoc != null)
+                        if (oWordDoc != null)
                         {
                             oWordDoc.Close();
                             oWordDoc = null;
@@ -307,24 +307,24 @@ namespace EndnoteProcessor
             {
                 num = 0;
             }
-            this.lstNotes.Items.Clear();
+            lstNotes.Items.Clear();
             checked
             {
-                int num2 = this.sEndNoteArray.Count - 1;
+                int num2 = sEndNoteArray.Count - 1;
                 for (int i = 0; i <= num2; i++)
                 {
                     NoteInfo noteInfo = (NoteInfo)sEndNoteInfo[i];
                     lstNotes.Items.Add("Endnote " + (i + 1).ToString());
                 }
-                this.lstNotes.EndUpdate();
-                this.lstNotes.SelectedIndex = num;
-                this.isUpdate = false;
+                lstNotes.EndUpdate();
+                lstNotes.SelectedIndex = num;
+                isUpdate = false;
             }
         }
 
         private void lstNotes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!this.isUpdate)
+            if (!isUpdate)
             {
                 NoteInfo noteInfo;
                 if (oldSelectedIndex >= 0)
@@ -360,7 +360,7 @@ namespace EndnoteProcessor
                 }
                 txtENText.Text = (string)sEndNoteArray[lstNotes.SelectedIndex];
                 noteInfo = (NoteInfo)sEndNoteInfo[lstNotes.SelectedIndex];
-                this.chkSupra.Checked = noteInfo.SupraOrId;
+                chkSupra.Checked = noteInfo.SupraOrId;
                 switch (noteInfo.Type)
                 {
                 case 0:
@@ -382,7 +382,7 @@ namespace EndnoteProcessor
                     rbMiscellaneous.Checked = true;
                     break;
                 }
-                oldSelectedIndex = this.lstNotes.SelectedIndex;
+                oldSelectedIndex = lstNotes.SelectedIndex;
                 bSaved = false;
                 bSavedProgress = false;
                 txtENText.Focus();
@@ -391,7 +391,7 @@ namespace EndnoteProcessor
 
         private void btnPrev_Click(object sender, EventArgs e)
         {
-            if (this.lstNotes.SelectedIndex > 0)
+            if (lstNotes.SelectedIndex > 0)
             {
                 ListBox lstNotes = this.lstNotes;
                 lstNotes.SelectedIndex = lstNotes.SelectedIndex - 1;
@@ -402,7 +402,7 @@ namespace EndnoteProcessor
         {
             checked
             {
-                if (this.lstNotes.SelectedIndex < this.lstNotes.Items.Count - 1)
+                if (lstNotes.SelectedIndex < lstNotes.Items.Count - 1)
                 {
                     ListBox lstNotes = this.lstNotes;
                     lstNotes.SelectedIndex = lstNotes.SelectedIndex + 1;
@@ -458,59 +458,59 @@ namespace EndnoteProcessor
             switch (noteInfo.Type)
             {
             case 0:
-                this.rbJournal.Checked = true;
+                rbJournal.Checked = true;
                 break;
             case 1:
-                this.rbBooks.Checked = true;
+                rbBooks.Checked = true;
                 break;
             case 2:
-                this.rbCase.Checked = true;
+                rbCase.Checked = true;
                 break;
             case 3:
-                this.rbLegislative.Checked = true;
+                rbLegislative.Checked = true;
                 break;
             case 4:
-                this.rbPeriodical.Checked = true;
+                rbPeriodical.Checked = true;
                 break;
             case 5:
-                this.rbMiscellaneous.Checked = true;
+                rbMiscellaneous.Checked = true;
                 break;
             }
-            this.oldSelectedIndex = this.lstNotes.SelectedIndex;
+            oldSelectedIndex = lstNotes.SelectedIndex;
         }
 
         private void mnExport_Click(object sender, EventArgs e)
         {
-            if (this.oldSelectedIndex >= 0 && this.sEndNoteArray != null && this.oldSelectedIndex < this.sEndNoteArray.Count)
+            if (oldSelectedIndex >= 0 && sEndNoteArray != null && oldSelectedIndex < sEndNoteArray.Count)
             {
                 sEndNoteArray[oldSelectedIndex] = txtENText.Text;
                 NoteInfo noteInfo = (NoteInfo)sEndNoteInfo[oldSelectedIndex];
                 noteInfo.SupraOrId = chkSupra.Checked;
-                if (this.rbJournal.Checked)
+                if (rbJournal.Checked)
                 {
                     noteInfo.Type = 0;
                 }
-                if (this.rbBooks.Checked)
+                if (rbBooks.Checked)
                 {
                     noteInfo.Type = 1;
                 }
-                if (this.rbCase.Checked)
+                if (rbCase.Checked)
                 {
                     noteInfo.Type = 2;
                 }
-                if (this.rbLegislative.Checked)
+                if (rbLegislative.Checked)
                 {
                     noteInfo.Type = 3;
                 }
-                if (this.rbPeriodical.Checked)
+                if (rbPeriodical.Checked)
                 {
                     noteInfo.Type = 4;
                 }
-                if (this.rbMiscellaneous.Checked)
+                if (rbMiscellaneous.Checked)
                 {
                     noteInfo.Type = 5;
                 }
-                this.sEndNoteInfo[oldSelectedIndex] = noteInfo;
+                sEndNoteInfo[oldSelectedIndex] = noteInfo;
             }
             Export();
         }
@@ -648,8 +648,9 @@ namespace EndnoteProcessor
                         }
                         streamWriter6.Close();
                     }
-                    this.bSaved = true;
-                    this.bSavedProgress = true;
+
+                    bSaved = true;
+                    bSavedProgress = true;
                     if (frmProgress != null)
                     {
                         frmProgress.Close();
@@ -660,38 +661,38 @@ namespace EndnoteProcessor
 
         private void mnClose_Click(object sender, EventArgs e)
         {
-            if (this.oldSelectedIndex >= 0)
+            if (oldSelectedIndex >= 0)
             {
                 sEndNoteArray[oldSelectedIndex] = txtENText.Text;
                 NoteInfo noteInfo = (NoteInfo)sEndNoteInfo[oldSelectedIndex];
-                noteInfo.SupraOrId = this.chkSupra.Checked;
-                if (this.rbJournal.Checked)
+                noteInfo.SupraOrId = chkSupra.Checked;
+                if (rbJournal.Checked)
                 {
                     noteInfo.Type = 0;
                 }
-                if (this.rbBooks.Checked)
+                if (rbBooks.Checked)
                 {
                     noteInfo.Type = 1;
                 }
-                if (this.rbCase.Checked)
+                if (rbCase.Checked)
                 {
                     noteInfo.Type = 2;
                 }
-                if (this.rbLegislative.Checked)
+                if (rbLegislative.Checked)
                 {
                     noteInfo.Type = 3;
                 }
-                if (this.rbPeriodical.Checked)
+                if (rbPeriodical.Checked)
                 {
                     noteInfo.Type = 4;
                 }
-                if (this.rbMiscellaneous.Checked)
+                if (rbMiscellaneous.Checked)
                 {
                     noteInfo.Type = 5;
                 }
-                this.sEndNoteInfo[oldSelectedIndex] = noteInfo;
+                sEndNoteInfo[oldSelectedIndex] = noteInfo;
             }
-            if (!this.bSaved & !this.bSavedProgress)
+            if (!bSaved & !bSavedProgress)
             {
                 DialogResult msgBoxResult = MessageBox.Show("You have not yet exported the endnotes, would you like to before closing?", "Processing Endnotes...", MessageBoxButtons.YesNoCancel);
                 if (msgBoxResult == DialogResult.Yes)
@@ -709,7 +710,7 @@ namespace EndnoteProcessor
                         DialogResult msgBoxResult2 = MessageBox.Show("Would you like to save your progress so that it can be resumed later?", "Processing Endnotes...", MessageBoxButtons.YesNoCancel);
                         if (msgBoxResult2 == DialogResult.Yes)
                         {
-                            this.SaveProgress();
+                            SaveProgress();
                         }
                         else if (msgBoxResult2 == DialogResult.Cancel)
                         {
@@ -718,67 +719,67 @@ namespace EndnoteProcessor
                     }
                 }
             }
-            this.lstNotes.BeginUpdate();
-            this.lstNotes.Items.Clear();
-            this.lstNotes.EndUpdate();
-            this.sEndNoteArray = new List<string>();
-            this.sEndNoteInfo = new List<NoteInfo>();
-            this.txtENText.Enabled = false;
-            this.txtENText.Text = "";
-            this.btnBreak.Enabled = false;
-            this.btnPrev.Enabled = false;
-            this.btnNext.Enabled = false;
-            this.chkSupra.Enabled = false;
-            this.rbBooks.Enabled = false;
-            this.rbJournal.Enabled = false;
-            this.rbCase.Enabled = false;
-            this.rbPeriodical.Enabled = false;
-            this.rbLegislative.Enabled = false;
-            this.rbMiscellaneous.Enabled = false;
-            this.gbxType.Enabled = false;
-            this.mnOpen.Enabled = true;
-            this.mnOpenPart.Enabled = true;
-            this.mnClose.Enabled = false;
-            this.mnExport.Enabled = false;
-            this.mnSaveProg.Enabled = false;
+            lstNotes.BeginUpdate();
+            lstNotes.Items.Clear();
+            lstNotes.EndUpdate();
+            sEndNoteArray = new List<string>();
+            sEndNoteInfo = new List<NoteInfo>();
+            txtENText.Enabled = false;
+            txtENText.Text = "";
+            btnBreak.Enabled = false;
+            btnPrev.Enabled = false;
+            btnNext.Enabled = false;
+            chkSupra.Enabled = false;
+            rbBooks.Enabled = false;
+            rbJournal.Enabled = false;
+            rbCase.Enabled = false;
+            rbPeriodical.Enabled = false;
+            rbLegislative.Enabled = false;
+            rbMiscellaneous.Enabled = false;
+            gbxType.Enabled = false;
+            mnOpen.Enabled = true;
+            mnOpenPart.Enabled = true;
+            mnClose.Enabled = false;
+            mnExport.Enabled = false;
+            mnSaveProg.Enabled = false;
         }
 
         private void ProcessingForm_Closing(object sender, CancelEventArgs e)
         {
-            if (!this.bExitGenerated)
+            if (!bExitGenerated)
             {
-                if (this.oldSelectedIndex >= 0 && this.sEndNoteArray != null && this.oldSelectedIndex < this.sEndNoteArray.Count)
+                if (oldSelectedIndex >= 0 && sEndNoteArray != null && oldSelectedIndex < sEndNoteArray.Count)
                 {
-                    this.sEndNoteArray[oldSelectedIndex] = this.txtENText.Text;
-                    NoteInfo noteInfo = (NoteInfo)this.sEndNoteInfo[oldSelectedIndex];
-                    noteInfo.SupraOrId = this.chkSupra.Checked;
-                    if (this.rbJournal.Checked)
+                    sEndNoteArray[oldSelectedIndex] = txtENText.Text;
+                    NoteInfo noteInfo = (NoteInfo)sEndNoteInfo[oldSelectedIndex];
+                    noteInfo.SupraOrId = chkSupra.Checked;
+                    if (rbJournal.Checked)
                     {
                         noteInfo.Type = 0;
                     }
-                    if (this.rbBooks.Checked)
+                    if (rbBooks.Checked)
                     {
                         noteInfo.Type = 1;
                     }
-                    if (this.rbCase.Checked)
+                    if (rbCase.Checked)
                     {
                         noteInfo.Type = 2;
                     }
-                    if (this.rbLegislative.Checked)
+                    if (rbLegislative.Checked)
                     {
                         noteInfo.Type = 3;
                     }
-                    if (this.rbPeriodical.Checked)
+                    if (rbPeriodical.Checked)
                     {
                         noteInfo.Type = 4;
                     }
-                    if (this.rbMiscellaneous.Checked)
+                    if (rbMiscellaneous.Checked)
                     {
                         noteInfo.Type = 5;
                     }
-                    this.sEndNoteInfo[oldSelectedIndex] = noteInfo;
+                    sEndNoteInfo[oldSelectedIndex] = noteInfo;
                 }
-                if (!this.bSaved & !this.bSavedProgress)
+                if (!bSaved & !bSavedProgress)
                 {
                     DialogResult msgBoxResult = MessageBox.Show("You have not yet exported the endnotes, would you like to before closing?", "Processing Endnotes...", MessageBoxButtons.YesNo);
                     if (msgBoxResult == DialogResult.Yes)
@@ -790,7 +791,7 @@ namespace EndnoteProcessor
                         DialogResult msgBoxResult2 = MessageBox.Show("Would you like to save your progress so that it can be resumed later?", "Processing Endnotes...", MessageBoxButtons.YesNo);
                         if (msgBoxResult2 == DialogResult.Yes)
                         {
-                            this.SaveProgress();
+                            SaveProgress();
                         }
                     }
                 }
@@ -799,41 +800,41 @@ namespace EndnoteProcessor
 
         private void mnSaveProg_Click(object sender, EventArgs e)
         {
-            this.SaveProgress();
+            SaveProgress();
         }
 
         private void SaveProgress()
         {
-            if (this.oldSelectedIndex >= 0)
+            if (oldSelectedIndex >= 0)
             {
-                this.sEndNoteArray[oldSelectedIndex] =  this.txtENText.Text;
-                NoteInfo noteInfo = (NoteInfo)this.sEndNoteInfo[oldSelectedIndex];
-                noteInfo.SupraOrId = this.chkSupra.Checked;
-                if (this.rbJournal.Checked)
+                sEndNoteArray[oldSelectedIndex] =  txtENText.Text;
+                NoteInfo noteInfo = (NoteInfo)sEndNoteInfo[oldSelectedIndex];
+                noteInfo.SupraOrId = chkSupra.Checked;
+                if (rbJournal.Checked)
                 {
                     noteInfo.Type = 0;
                 }
-                if (this.rbBooks.Checked)
+                if (rbBooks.Checked)
                 {
                     noteInfo.Type = 1;
                 }
-                if (this.rbCase.Checked)
+                if (rbCase.Checked)
                 {
                     noteInfo.Type = 2;
                 }
-                if (this.rbLegislative.Checked)
+                if (rbLegislative.Checked)
                 {
                     noteInfo.Type = 3;
                 }
-                if (this.rbPeriodical.Checked)
+                if (rbPeriodical.Checked)
                 {
                     noteInfo.Type = 4;
                 }
-                if (this.rbMiscellaneous.Checked)
+                if (rbMiscellaneous.Checked)
                 {
                     noteInfo.Type = 5;
                 }
-                this.sEndNoteInfo[oldSelectedIndex] =  noteInfo;
+                sEndNoteInfo[oldSelectedIndex] =  noteInfo;
             }
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.RestoreDirectory = true;
@@ -856,7 +857,7 @@ namespace EndnoteProcessor
                         infoSerializer.Serialize(xmlWriter, sEndNoteInfo);
                         xmlWriter.WriteEndElement();
                         xmlWriter.Close();
-                        this.bSavedProgress = true;
+                        bSavedProgress = true;
                     }
                     catch (Exception)
                     {
@@ -868,38 +869,38 @@ namespace EndnoteProcessor
 
         private void mnOpenPart_Click(object sender, EventArgs e)
         {
-            if (this.oldSelectedIndex >= 0 && this.sEndNoteArray != null && this.oldSelectedIndex < this.sEndNoteArray.Count)
+            if (oldSelectedIndex >= 0 && sEndNoteArray != null && oldSelectedIndex < sEndNoteArray.Count)
             {
-                this.sEndNoteArray[oldSelectedIndex] = txtENText.Text;
-                NoteInfo noteInfo = (NoteInfo)this.sEndNoteInfo[oldSelectedIndex];
-                noteInfo.SupraOrId = this.chkSupra.Checked;
-                if (this.rbJournal.Checked)
+                sEndNoteArray[oldSelectedIndex] = txtENText.Text;
+                NoteInfo noteInfo = (NoteInfo)sEndNoteInfo[oldSelectedIndex];
+                noteInfo.SupraOrId = chkSupra.Checked;
+                if (rbJournal.Checked)
                 {
                     noteInfo.Type = 0;
                 }
-                if (this.rbBooks.Checked)
+                if (rbBooks.Checked)
                 {
                     noteInfo.Type = 1;
                 }
-                if (this.rbCase.Checked)
+                if (rbCase.Checked)
                 {
                     noteInfo.Type = 2;
                 }
-                if (this.rbLegislative.Checked)
+                if (rbLegislative.Checked)
                 {
                     noteInfo.Type = 3;
                 }
-                if (this.rbPeriodical.Checked)
+                if (rbPeriodical.Checked)
                 {
                     noteInfo.Type = 4;
                 }
-                if (this.rbMiscellaneous.Checked)
+                if (rbMiscellaneous.Checked)
                 {
                     noteInfo.Type = 5;
                 }
-                this.sEndNoteInfo[oldSelectedIndex] = noteInfo;
+                sEndNoteInfo[oldSelectedIndex] = noteInfo;
             }
-            if (!this.bSaved & !this.bSavedProgress)
+            if (!bSaved & !bSavedProgress)
             {
                 DialogResult msgBoxResult = MessageBox.Show("You have not yet exported the endnotes, would you like to before exiting?", "Processing Endnotes...", MessageBoxButtons.YesNoCancel);
                 if (msgBoxResult == DialogResult.Yes)
@@ -917,7 +918,7 @@ namespace EndnoteProcessor
                         DialogResult msgBoxResult2 = MessageBox.Show("Would you like to save your progress so that it can be resumed later?", "Processing Endnotes...", MessageBoxButtons.YesNoCancel);
                         if (msgBoxResult2 == DialogResult.Yes)
                         {
-                            this.SaveProgress();
+                            SaveProgress();
                         }
                         else if (msgBoxResult2 == DialogResult.Cancel)
                         {
@@ -947,49 +948,49 @@ namespace EndnoteProcessor
                         sEndNoteInfo = (List<NoteInfo>)infoSerializer.Deserialize(xmlReader);
                         xmlReader.Close();
 
-                        this.updateListBox();
-                        this.txtENText.Text = (string)this.sEndNoteArray[lstNotes.SelectedIndex];
-                        NoteInfo noteInfo = (NoteInfo)this.sEndNoteInfo[lstNotes.SelectedIndex];
-                        this.chkSupra.Checked = noteInfo.SupraOrId;
-                        this.oldSelectedIndex = this.lstNotes.SelectedIndex;
+                        updateListBox();
+                        txtENText.Text = (string)sEndNoteArray[lstNotes.SelectedIndex];
+                        NoteInfo noteInfo = (NoteInfo)sEndNoteInfo[lstNotes.SelectedIndex];
+                        chkSupra.Checked = noteInfo.SupraOrId;
+                        oldSelectedIndex = lstNotes.SelectedIndex;
                         switch (noteInfo.Type)
                         {
                         case 0:
-                            this.rbJournal.Checked = true;
+                            rbJournal.Checked = true;
                             break;
                         case 1:
-                            this.rbBooks.Checked = true;
+                            rbBooks.Checked = true;
                             break;
                         case 2:
-                            this.rbCase.Checked = true;
+                            rbCase.Checked = true;
                             break;
                         case 3:
-                            this.rbLegislative.Checked = true;
+                            rbLegislative.Checked = true;
                             break;
                         case 4:
-                            this.rbPeriodical.Checked = true;
+                            rbPeriodical.Checked = true;
                             break;
                         case 5:
-                            this.rbMiscellaneous.Checked = true;
+                            rbMiscellaneous.Checked = true;
                             break;
                         }
-                        this.txtENText.Enabled = true;
-                        this.btnBreak.Enabled = true;
-                        this.btnPrev.Enabled = true;
-                        this.btnNext.Enabled = true;
-                        this.chkSupra.Enabled = true;
-                        this.rbBooks.Enabled = true;
-                        this.rbJournal.Enabled = true;
-                        this.rbCase.Enabled = true;
-                        this.rbPeriodical.Enabled = true;
-                        this.rbLegislative.Enabled = true;
-                        this.rbMiscellaneous.Enabled = true;
-                        this.gbxType.Enabled = true;
-                        this.mnOpen.Enabled = false;
-                        this.mnOpenPart.Enabled = false;
-                        this.mnSaveProg.Enabled = true;
-                        this.mnClose.Enabled = true;
-                        this.mnExport.Enabled = true;
+                        txtENText.Enabled = true;
+                        btnBreak.Enabled = true;
+                        btnPrev.Enabled = true;
+                        btnNext.Enabled = true;
+                        chkSupra.Enabled = true;
+                        rbBooks.Enabled = true;
+                        rbJournal.Enabled = true;
+                        rbCase.Enabled = true;
+                        rbPeriodical.Enabled = true;
+                        rbLegislative.Enabled = true;
+                        rbMiscellaneous.Enabled = true;
+                        gbxType.Enabled = true;
+                        mnOpen.Enabled = false;
+                        mnOpenPart.Enabled = false;
+                        mnSaveProg.Enabled = true;
+                        mnClose.Enabled = true;
+                        mnExport.Enabled = true;
                     }
                     catch (Exception)
                     {
@@ -1001,23 +1002,23 @@ namespace EndnoteProcessor
 
         private void chkSupra_CheckStateChanged(object sender, EventArgs e)
         {
-            if (!this.chkSupra.Checked)
+            if (!chkSupra.Checked)
             {
-                this.rbBooks.Enabled = true;
-                this.rbJournal.Enabled = true;
-                this.rbCase.Enabled = true;
-                this.rbPeriodical.Enabled = true;
-                this.rbLegislative.Enabled = true;
-                this.rbMiscellaneous.Enabled = true;
+                rbBooks.Enabled = true;
+                rbJournal.Enabled = true;
+                rbCase.Enabled = true;
+                rbPeriodical.Enabled = true;
+                rbLegislative.Enabled = true;
+                rbMiscellaneous.Enabled = true;
             }
             else
             {
-                this.rbBooks.Enabled = false;
-                this.rbJournal.Enabled = false;
-                this.rbCase.Enabled = false;
-                this.rbPeriodical.Enabled = false;
-                this.rbLegislative.Enabled = false;
-                this.rbMiscellaneous.Enabled = false;
+                rbBooks.Enabled = false;
+                rbJournal.Enabled = false;
+                rbCase.Enabled = false;
+                rbPeriodical.Enabled = false;
+                rbLegislative.Enabled = false;
+                rbMiscellaneous.Enabled = false;
             }
         }
 
