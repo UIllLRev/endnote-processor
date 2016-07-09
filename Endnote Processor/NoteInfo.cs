@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.Serialization;
 
 namespace EndnoteProcessor
 {
@@ -28,4 +29,31 @@ namespace EndnoteProcessor
 			};
 		}
 	}
+
+    [DataContract]
+    struct NoteExportInfo
+    {
+        public enum Type
+        {
+            [EnumMember(Value = "B")]
+            B,
+            [EnumMember(Value = "C")]
+            C,
+            [EnumMember(Value = "J")]
+            J,
+            [EnumMember(Value = "L")]
+            L,
+            [EnumMember(Value = "P")]
+            P,
+            [EnumMember(Value = "M")]
+            M
+        }
+        
+        public Type SourceType;
+        [DataMember(Name = "type")]
+        public string SourceTypeHack { get { return SourceType.ToString(); } private set { } }
+
+        [DataMember(Name ="citation")]
+        public string Citation;
+    }
 }

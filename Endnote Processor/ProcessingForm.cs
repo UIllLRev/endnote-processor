@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
-using System.Xml.Serialization;
 
 using DocumentFormat.OpenXml.Packaging;
 
@@ -139,8 +140,7 @@ namespace EndnoteProcessor
                 {
                     OpenFileDialog openFileDialog = new OpenFileDialog();
                     openFileDialog.Multiselect = false;
-                    //openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                    openFileDialog.Filter = "Word Documents (*.doc; *.docx)|*.doc;*.docx";
+                    openFileDialog.Filter = "Word Documents|*.docx";
                     openFileDialog.Title = "Open a Word document to process...";
                     openFileDialog.CheckFileExists = true;
                     if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -520,7 +520,7 @@ namespace EndnoteProcessor
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.RestoreDirectory = true;
             saveFileDialog.Title = "Save the export file collection...";
-            saveFileDialog.Filter = "Directory|";
+            saveFileDialog.Filter = "JSON|*.json";
             saveFileDialog.CheckFileExists = false;
             saveFileDialog.CheckPathExists = true;
             checked
@@ -530,123 +530,45 @@ namespace EndnoteProcessor
                     frmProgress frmProgress = new frmProgress();
                     frmProgress.SetMinVal(0);
                     frmProgress.SetMaxVal(sEndNoteArray.Count);
-                    if (!Directory.Exists(saveFileDialog.FileName))
-                    {
-                        Directory.CreateDirectory(saveFileDialog.FileName);
-                    }
-                    string text = saveFileDialog.FileName + "\\";
-                    ArrayList arrayList = new ArrayList();
-                    ArrayList arrayList2 = new ArrayList();
-                    ArrayList arrayList3 = new ArrayList();
-                    ArrayList arrayList4 = new ArrayList();
-                    ArrayList arrayList5 = new ArrayList();
-                    ArrayList arrayList6 = new ArrayList();
-                    int num = this.sEndNoteArray.Count - 1;
-                    for (int i = 0; i <= num; i++)
+
+                    List<NoteExportInfo> exports = new List<NoteExportInfo>();
+                    for (int i = 0; i < sEndNoteArray.Count; i++)
                     {
                         NoteInfo noteInfo = (NoteInfo)sEndNoteInfo[i];
                         if (!noteInfo.SupraOrId)
                         {
+                            NoteExportInfo.Type t;
                             switch (noteInfo.Type)
                             {
                             case 0:
-                                arrayList3.Add(sEndNoteArray[i]);
+                                    t = NoteExportInfo.Type.J;
                                 break;
                             case 1:
-                                arrayList.Add(sEndNoteArray[i]);
+                                    t = NoteExportInfo.Type.B;
                                 break;
                             case 2:
-                                arrayList2.Add(sEndNoteArray[i]);
+                                    t = NoteExportInfo.Type.C;
                                 break;
                             case 3:
-                                arrayList4.Add(sEndNoteArray[i]);
+                                    t = NoteExportInfo.Type.L;
                                 break;
                             case 4:
-                                arrayList5.Add(sEndNoteArray[i]);
+                                    t = NoteExportInfo.Type.P;
                                 break;
-                            case 5:
-                                arrayList6.Add(sEndNoteArray[i]);
+                            default:
+                                    t = NoteExportInfo.Type.M;
                                 break;
                             }
+
+                            exports.Add(new NoteExportInfo() { SourceType = t, Citation = sEndNoteArray[i] });
                         }
                         frmProgress.StepUp(1);
                     }
-                    if (arrayList3.Count > 0)
-                    {
-                        frmProgress.ResetBar();
-                        frmProgress.SetMaxVal(arrayList3.Count);
-                        StreamWriter streamWriter = new StreamWriter(text + "journals.csv", false);
-                        int num2 = arrayList3.Count - 1;
-                        for (int i = 0; i <= num2; i++)
-                        {
-                            streamWriter.Write(arrayList3[i] + sDelimiter);
-                            frmProgress.StepUp(1);
-                        }
-                        streamWriter.Close();
-                    }
-                    if (arrayList.Count > 0)
-                    {
-                        frmProgress.ResetBar();
-                        frmProgress.SetMaxVal(arrayList.Count);
-                        StreamWriter streamWriter2 = new StreamWriter(text + "books.csv", false);
-                        int num3 = arrayList.Count - 1;
-                        for (int i = 0; i <= num3; i++)
-                        {
-                            streamWriter2.Write(arrayList[i] + sDelimiter);
-                            frmProgress.StepUp(1);
-                        }
-                        streamWriter2.Close();
-                    }
-                    if (arrayList2.Count > 0)
-                    {
-                        frmProgress.ResetBar();
-                        frmProgress.SetMaxVal(arrayList2.Count);
-                        StreamWriter streamWriter3 = new StreamWriter(text + "cases.csv", false);
-                        int num4 = arrayList2.Count - 1;
-                        for (int i = 0; i <= num4; i++)
-                        {
-                            streamWriter3.Write(arrayList2[i] + sDelimiter);
-                            frmProgress.StepUp(1);
-                        }
-                        streamWriter3.Close();
-                    }
-                    if (arrayList4.Count > 0)
-                    {
-                        frmProgress.ResetBar();
-                        frmProgress.SetMaxVal(arrayList4.Count);
-                        StreamWriter streamWriter4 = new StreamWriter(text + "legislative.csv", false);
-                        int num5 = arrayList4.Count - 1;
-                        for (int i = 0; i <= num5; i++)
-                        {
-                            streamWriter4.Write(arrayList4[i] + sDelimiter);
-                            frmProgress.StepUp(1);
-                        }
-                        streamWriter4.Close();
-                    }
-                    if (arrayList5.Count > 0)
-                    {
-                        frmProgress.ResetBar();
-                        frmProgress.SetMaxVal(arrayList5.Count);
-                        StreamWriter streamWriter5 = new StreamWriter(text + "periodicals.csv", false);
-                        int num6 = arrayList5.Count - 1;
-                        for (int i = 0; i <= num6; i++)
-                        {
-                            streamWriter5.Write(arrayList5[i] + sDelimiter);
-                            frmProgress.StepUp(1);
-                        }
-                        streamWriter5.Close();
-                    }
-                    if (arrayList6.Count > 0)
-                    {
-                        frmProgress.ResetBar();
-                        frmProgress.SetMaxVal(arrayList6.Count);
-                        StreamWriter streamWriter6 = new StreamWriter(text + "miscellaneous.csv", false);
-                        for (int i = 0; i <= arrayList6.Count - 1; i++)
-                        {
-                            streamWriter6.Write(arrayList6[i] + sDelimiter);
-                            frmProgress.StepUp(1);
-                        }
-                        streamWriter6.Close();
+
+                    using (FileStream fs = new FileStream(saveFileDialog.FileName, FileMode.Create))
+                    { 
+                        DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(List<NoteExportInfo>));
+                        serializer.WriteObject(fs, exports);
                     }
 
                     bSaved = true;
@@ -838,7 +760,6 @@ namespace EndnoteProcessor
             }
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.RestoreDirectory = true;
-            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             saveFileDialog.Title = "Save the current progress...";
             saveFileDialog.Filter = "Partial Endnote Edit (*.pen)|*.pen";
             saveFileDialog.CheckFileExists = false;
@@ -849,14 +770,17 @@ namespace EndnoteProcessor
                 {
                     try
                     {
-                        XmlWriter xmlWriter = XmlTextWriter.Create(saveFileDialog.FileName, new XmlWriterSettings() {  });
-                        xmlWriter.WriteStartElement("EndnoteProcessorState");
-                        XmlSerializer endnoteSerializer = new XmlSerializer(typeof(List<string>));
-                        endnoteSerializer.Serialize(xmlWriter, sEndNoteArray);
-                        XmlSerializer infoSerializer = new XmlSerializer(typeof(List<NoteInfo>));
-                        infoSerializer.Serialize(xmlWriter, sEndNoteInfo);
-                        xmlWriter.WriteEndElement();
-                        xmlWriter.Close();
+                        using (FileStream fs = new FileStream(saveFileDialog.FileName, FileMode.Create))
+                        {
+                            XmlWriter xmlWriter = XmlWriter.Create(fs);
+                            xmlWriter.WriteStartElement("EndnoteProcessorState");
+                            DataContractSerializer endnoteSerializer = new DataContractSerializer(typeof(List<string>));
+                            endnoteSerializer.WriteObject(xmlWriter, sEndNoteArray);
+                            DataContractSerializer infoSerializer = new DataContractSerializer(typeof(List<NoteInfo>));
+                            infoSerializer.WriteObject(xmlWriter, sEndNoteInfo);
+                            xmlWriter.WriteEndElement();
+                            xmlWriter.Close();
+                        }
                         bSavedProgress = true;
                     }
                     catch (Exception)
@@ -930,9 +854,8 @@ namespace EndnoteProcessor
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.RestoreDirectory = true;
             openFileDialog.Title = "Open a work in progress...";
-            openFileDialog.Filter = "Partial Endnote Edit (*.pen)|*.pen";
+            openFileDialog.Filter = "Partial Endnote Edit|*.pen";
             openFileDialog.CheckFileExists = true;
-            //openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             openFileDialog.CheckPathExists = true;
             checked
             {
@@ -940,13 +863,15 @@ namespace EndnoteProcessor
                 {
                     try
                     {
-                        XmlReader xmlReader = XmlReader.Create(openFileDialog.FileName);
-                        xmlReader.ReadStartElement();
-                        XmlSerializer endnoteSerializer = new XmlSerializer(typeof(List<string>));
-                        sEndNoteArray = (List<string>)endnoteSerializer.Deserialize(xmlReader);
-                        XmlSerializer infoSerializer = new XmlSerializer(typeof(List<NoteInfo>));
-                        sEndNoteInfo = (List<NoteInfo>)infoSerializer.Deserialize(xmlReader);
-                        xmlReader.Close();
+                        using (FileStream fs = new FileStream(openFileDialog.FileName, FileMode.Open))
+                        {
+                            XmlDictionaryReader xmlReader = XmlDictionaryReader.CreateTextReader(fs, XmlDictionaryReaderQuotas.Max);
+                            xmlReader.ReadStartElement();
+                            DataContractSerializer endnoteSerializer = new DataContractSerializer(typeof(List<string>));
+                            sEndNoteArray = (List<string>)endnoteSerializer.ReadObject(xmlReader);
+                            DataContractSerializer infoSerializer = new DataContractSerializer(typeof(List<NoteInfo>));
+                            sEndNoteInfo = (List<NoteInfo>)infoSerializer.ReadObject(xmlReader);
+                        }
 
                         updateListBox();
                         txtENText.Text = (string)sEndNoteArray[lstNotes.SelectedIndex];
