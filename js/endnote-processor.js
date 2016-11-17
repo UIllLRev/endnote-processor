@@ -41,7 +41,7 @@ function handleFileSelect(evt) {
                 attachExportChangeListener(inputs[i]);
             }
             line.appendChild(newSelector);
-            line.appendChild(q);
+            line.appendChild(q.cloneNode(true));
             document.getElementById("endnotes").appendChild(line);
         });
     });
