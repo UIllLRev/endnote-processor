@@ -22,7 +22,7 @@ function handleFileSelect(evt) {
     var files = evt.target.files;
     var reader = new FileReader();
     window._endnoteIdCounter = 0;
-    docx(files[0]).then(function (r) {
+    get_endnotes(files[0]).then(function (r) {
         var selector = document.createElement("span");
         selector.innerHTML += '<input type="radio" name="type" value="B">Book</input>';
         selector.innerHTML += '<input type="radio" name="type" value="C">Case</input>';
@@ -31,7 +31,8 @@ function handleFileSelect(evt) {
         selector.innerHTML += '<input type="radio" name="type" value="P">Periodical</input>';
         selector.innerHTML += '<input type="radio" name="type" value="M">Miscellaneous</input>';
         selector.innerHTML += '<input type="radio" name="type" value="E">Exclude</input>';
-        r.endnotes.childNodes.forEach(function (q) { 
+
+        r.childNodes.forEach(function (q) { 
             var line = document.createElement("p");
             line.id = 'line-' + window._endnoteIdCounter++;
             var newSelector = selector.cloneNode(true);
