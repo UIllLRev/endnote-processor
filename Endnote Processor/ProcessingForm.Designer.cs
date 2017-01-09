@@ -138,6 +138,7 @@
             this.txtENText.Location = new System.Drawing.Point(184, 40);
             this.txtENText.Multiline = true;
             this.txtENText.Name = "txtENText";
+            this.txtENText.ReadOnly = true;
             this.txtENText.Size = new System.Drawing.Size(200, 256);
             this.txtENText.TabIndex = 1;
             this.txtENText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtENText_KeyDown);
