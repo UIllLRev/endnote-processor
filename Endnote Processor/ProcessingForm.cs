@@ -10,15 +10,11 @@ using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
 
-using DocumentFormat.OpenXml.Packaging;
-
 
 namespace EndnoteProcessor
 {
     public partial class ProcessingForm : Form
     {
-        private WordprocessingDocument oWordDoc;
-
         public List<string> sEndNoteArray;
 
         public List<NoteInfo> sEndNoteInfo;
@@ -132,15 +128,13 @@ namespace EndnoteProcessor
                     openFileDialog.CheckFileExists = true;
                     if (openFileDialog.ShowDialog() == DialogResult.OK)
                     {
-                        oWordDoc = WordprocessingDocument.Open(openFileDialog.FileName, false);
-                        XElement xmlDoc = oWordDoc.MainDocumentPart.EndnotesPart.GetXDocument().Root;
-                        if (xmlDoc.HasElements)
-                        {
+                        sEndNoteArray = EndnoteExtractor.EndnoteExtractor.GetEndnotes(openFileDialog.FileName);
+                       
                             frmProgress frmProgress = new frmProgress();
                             frmProgress.Show();
                             frmProgress.SetMinVal(0);
                             frmProgress.SetMaxVal(xmlDoc.Elements().Count());
-                            sEndNoteArray = new List<string>();
+                            
                             sEndNoteInfo = new List<NoteInfo>();
                             int i = 0;
                             NoteInfo noteInfo = new NoteInfo();

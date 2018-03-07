@@ -34,8 +34,10 @@
             this.mnOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.mnExport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnClose = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnOpenPart = new System.Windows.Forms.ToolStripMenuItem();
             this.mnSaveProg = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.mnExit = new System.Windows.Forms.ToolStripMenuItem();
             this.txtENText = new System.Windows.Forms.TextBox();
             this.lblENText = new System.Windows.Forms.Label();
@@ -51,19 +53,18 @@
             this.rbCase = new System.Windows.Forms.RadioButton();
             this.rbBooks = new System.Windows.Forms.RadioButton();
             this.rbJournal = new System.Windows.Forms.RadioButton();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.gbxType.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnFile});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(520, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1046, 40);
             this.menuStrip1.TabIndex = 0;
             // 
             // mnFile
@@ -78,7 +79,7 @@
             this.toolStripMenuItem2,
             this.mnExit});
             this.mnFile.Name = "mnFile";
-            this.mnFile.Size = new System.Drawing.Size(37, 20);
+            this.mnFile.Size = new System.Drawing.Size(64, 36);
             this.mnFile.Text = "&File";
             // 
             // mnOpen
@@ -86,7 +87,7 @@
             this.mnOpen.Name = "mnOpen";
             this.mnOpen.ShortcutKeyDisplayString = "Ctrl+O";
             this.mnOpen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.mnOpen.Size = new System.Drawing.Size(246, 22);
+            this.mnOpen.Size = new System.Drawing.Size(457, 38);
             this.mnOpen.Text = "&Open Word Document...";
             this.mnOpen.Click += new System.EventHandler(this.mnOpen_Click);
             // 
@@ -94,7 +95,7 @@
             // 
             this.mnExport.Enabled = false;
             this.mnExport.Name = "mnExport";
-            this.mnExport.Size = new System.Drawing.Size(246, 22);
+            this.mnExport.Size = new System.Drawing.Size(457, 38);
             this.mnExport.Text = "&Export...";
             this.mnExport.Click += new System.EventHandler(this.mnExport_Click);
             // 
@@ -102,14 +103,19 @@
             // 
             this.mnClose.Enabled = false;
             this.mnClose.Name = "mnClose";
-            this.mnClose.Size = new System.Drawing.Size(246, 22);
+            this.mnClose.Size = new System.Drawing.Size(457, 38);
             this.mnClose.Text = "&Close Document";
             this.mnClose.Click += new System.EventHandler(this.mnClose_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(454, 6);
             // 
             // mnOpenPart
             // 
             this.mnOpenPart.Name = "mnOpenPart";
-            this.mnOpenPart.Size = new System.Drawing.Size(246, 22);
+            this.mnOpenPart.Size = new System.Drawing.Size(457, 38);
             this.mnOpenPart.Text = "Open &Partial Edit...";
             this.mnOpenPart.Click += new System.EventHandler(this.mnOpenPart_Click);
             // 
@@ -117,15 +123,20 @@
             // 
             this.mnSaveProg.Enabled = false;
             this.mnSaveProg.Name = "mnSaveProg";
-            this.mnSaveProg.Size = new System.Drawing.Size(246, 22);
+            this.mnSaveProg.Size = new System.Drawing.Size(457, 38);
             this.mnSaveProg.Text = "&Save Progress...";
             this.mnSaveProg.Click += new System.EventHandler(this.mnSaveProg_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(454, 6);
             // 
             // mnExit
             // 
             this.mnExit.Name = "mnExit";
             this.mnExit.ShortcutKeyDisplayString = "Alt+F4";
-            this.mnExit.Size = new System.Drawing.Size(246, 22);
+            this.mnExit.Size = new System.Drawing.Size(457, 38);
             this.mnExit.Text = "E&xit";
             this.mnExit.Click += new System.EventHandler(this.mnExit_Click);
             // 
@@ -135,19 +146,19 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtENText.Enabled = false;
-            this.txtENText.Location = new System.Drawing.Point(184, 40);
+            this.txtENText.Location = new System.Drawing.Point(368, 74);
             this.txtENText.Multiline = true;
             this.txtENText.Name = "txtENText";
             this.txtENText.ReadOnly = true;
-            this.txtENText.Size = new System.Drawing.Size(200, 256);
+            this.txtENText.Size = new System.Drawing.Size(406, 467);
             this.txtENText.TabIndex = 1;
             this.txtENText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtENText_KeyDown);
             // 
             // lblENText
             // 
-            this.lblENText.Location = new System.Drawing.Point(184, 24);
+            this.lblENText.Location = new System.Drawing.Point(368, 44);
             this.lblENText.Name = "lblENText";
-            this.lblENText.Size = new System.Drawing.Size(100, 23);
+            this.lblENText.Size = new System.Drawing.Size(200, 43);
             this.lblENText.TabIndex = 2;
             this.lblENText.Text = "Endnote Text";
             // 
@@ -156,9 +167,10 @@
             this.lstNotes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lstNotes.IntegralHeight = false;
-            this.lstNotes.Location = new System.Drawing.Point(0, 24);
+            this.lstNotes.ItemHeight = 25;
+            this.lstNotes.Location = new System.Drawing.Point(0, 44);
             this.lstNotes.Name = "lstNotes";
-            this.lstNotes.Size = new System.Drawing.Size(176, 320);
+            this.lstNotes.Size = new System.Drawing.Size(352, 586);
             this.lstNotes.TabIndex = 3;
             this.lstNotes.SelectedIndexChanged += new System.EventHandler(this.lstNotes_SelectedIndexChanged);
             // 
@@ -166,9 +178,9 @@
             // 
             this.chkSupra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkSupra.Enabled = false;
-            this.chkSupra.Location = new System.Drawing.Point(392, 48);
+            this.chkSupra.Location = new System.Drawing.Point(790, 89);
             this.chkSupra.Name = "chkSupra";
-            this.chkSupra.Size = new System.Drawing.Size(120, 40);
+            this.chkSupra.Size = new System.Drawing.Size(240, 73);
             this.chkSupra.TabIndex = 4;
             this.chkSupra.Text = "&Exclude from Exports";
             this.chkSupra.CheckStateChanged += new System.EventHandler(this.chkSupra_CheckStateChanged);
@@ -177,9 +189,9 @@
             // 
             this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNext.Enabled = false;
-            this.btnNext.Location = new System.Drawing.Point(437, 302);
+            this.btnNext.Location = new System.Drawing.Point(880, 553);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(75, 23);
+            this.btnNext.Size = new System.Drawing.Size(150, 42);
             this.btnNext.TabIndex = 5;
             this.btnNext.Text = "&Next ->";
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
@@ -188,9 +200,9 @@
             // 
             this.btnPrev.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPrev.Enabled = false;
-            this.btnPrev.Location = new System.Drawing.Point(360, 302);
+            this.btnPrev.Location = new System.Drawing.Point(726, 553);
             this.btnPrev.Name = "btnPrev";
-            this.btnPrev.Size = new System.Drawing.Size(75, 23);
+            this.btnPrev.Size = new System.Drawing.Size(150, 42);
             this.btnPrev.TabIndex = 6;
             this.btnPrev.Text = "<- Pre&vious";
             this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
@@ -199,9 +211,9 @@
             // 
             this.btnBreak.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnBreak.Enabled = false;
-            this.btnBreak.Location = new System.Drawing.Point(209, 302);
+            this.btnBreak.Location = new System.Drawing.Point(418, 553);
             this.btnBreak.Name = "btnBreak";
-            this.btnBreak.Size = new System.Drawing.Size(75, 23);
+            this.btnBreak.Size = new System.Drawing.Size(150, 42);
             this.btnBreak.TabIndex = 7;
             this.btnBreak.Text = "Break &Up";
             this.btnBreak.Click += new System.EventHandler(this.btnBreak_Click);
@@ -217,75 +229,65 @@
             this.gbxType.Controls.Add(this.rbBooks);
             this.gbxType.Controls.Add(this.rbJournal);
             this.gbxType.Enabled = false;
-            this.gbxType.Location = new System.Drawing.Point(392, 96);
+            this.gbxType.Location = new System.Drawing.Point(790, 177);
             this.gbxType.Name = "gbxType";
-            this.gbxType.Size = new System.Drawing.Size(120, 160);
+            this.gbxType.Size = new System.Drawing.Size(240, 291);
             this.gbxType.TabIndex = 8;
             this.gbxType.TabStop = false;
             this.gbxType.Text = "Type of Reference";
             // 
             // rbMiscellaneous
             // 
-            this.rbMiscellaneous.Location = new System.Drawing.Point(8, 136);
+            this.rbMiscellaneous.Location = new System.Drawing.Point(16, 251);
             this.rbMiscellaneous.Name = "rbMiscellaneous";
-            this.rbMiscellaneous.Size = new System.Drawing.Size(96, 16);
+            this.rbMiscellaneous.Size = new System.Drawing.Size(192, 30);
             this.rbMiscellaneous.TabIndex = 5;
             this.rbMiscellaneous.Text = "&Miscellaneous";
             // 
             // rbPeriodical
             // 
-            this.rbPeriodical.Location = new System.Drawing.Point(8, 112);
+            this.rbPeriodical.Location = new System.Drawing.Point(16, 207);
             this.rbPeriodical.Name = "rbPeriodical";
-            this.rbPeriodical.Size = new System.Drawing.Size(96, 16);
+            this.rbPeriodical.Size = new System.Drawing.Size(192, 29);
             this.rbPeriodical.TabIndex = 4;
             this.rbPeriodical.Text = "&Periodical";
             // 
             // rbLegislative
             // 
-            this.rbLegislative.Location = new System.Drawing.Point(8, 88);
+            this.rbLegislative.Location = new System.Drawing.Point(16, 162);
             this.rbLegislative.Name = "rbLegislative";
-            this.rbLegislative.Size = new System.Drawing.Size(96, 16);
+            this.rbLegislative.Size = new System.Drawing.Size(192, 30);
             this.rbLegislative.TabIndex = 3;
             this.rbLegislative.Text = "&Legislative";
             // 
             // rbCase
             // 
-            this.rbCase.Location = new System.Drawing.Point(8, 64);
+            this.rbCase.Location = new System.Drawing.Point(16, 118);
             this.rbCase.Name = "rbCase";
-            this.rbCase.Size = new System.Drawing.Size(96, 16);
+            this.rbCase.Size = new System.Drawing.Size(192, 30);
             this.rbCase.TabIndex = 2;
             this.rbCase.Text = "&Case";
             // 
             // rbBooks
             // 
-            this.rbBooks.Location = new System.Drawing.Point(8, 40);
+            this.rbBooks.Location = new System.Drawing.Point(16, 74);
             this.rbBooks.Name = "rbBooks";
-            this.rbBooks.Size = new System.Drawing.Size(96, 16);
+            this.rbBooks.Size = new System.Drawing.Size(192, 29);
             this.rbBooks.TabIndex = 1;
             this.rbBooks.Text = "&Book";
             // 
             // rbJournal
             // 
-            this.rbJournal.Location = new System.Drawing.Point(8, 16);
+            this.rbJournal.Location = new System.Drawing.Point(16, 30);
             this.rbJournal.Name = "rbJournal";
-            this.rbJournal.Size = new System.Drawing.Size(96, 16);
+            this.rbJournal.Size = new System.Drawing.Size(192, 29);
             this.rbJournal.TabIndex = 0;
             this.rbJournal.Text = "&Journal";
             // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(243, 6);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(243, 6);
-            // 
             // ProcessingForm
             // 
-            this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-            this.ClientSize = new System.Drawing.Size(520, 334);
+            this.AutoScaleBaseSize = new System.Drawing.Size(10, 24);
+            this.ClientSize = new System.Drawing.Size(1046, 612);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.gbxType);
             this.Controls.Add(this.btnBreak);
@@ -298,7 +300,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(536, 370);
+            this.MinimumSize = new System.Drawing.Size(1072, 683);
             this.Name = "ProcessingForm";
             this.Text = "Processing Endnotes";
             this.Closing += new System.ComponentModel.CancelEventHandler(this.ProcessingForm_Closing);
